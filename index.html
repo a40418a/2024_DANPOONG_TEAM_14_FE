@@ -1,12 +1,20 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <!-- 제목 미리보기 -->
+    <meta property="og:title" content="동그라미" />
+    <!-- 내용 -->
+    <meta property="og:description" content="동그라미" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <script
+      type="text/javascript"
+      strategy="beforeInteractive"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=%VITE_KAKAOMAP_JAVASCRIPT_APP_KEY%&libraries=services,clusterer,drawing"
+    ></script>
+    <title>동그라미</title>
   </head>
-  <body>
+  <body class="max-w-[24.563rem] max-h-[53.25rem] font-goorm m-auto">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

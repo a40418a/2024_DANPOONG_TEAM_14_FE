@@ -1,25 +1,23 @@
-import { useState } from "react"
-
 export const BookmarkItem = ({
   name,
   type,
   onClick,
+  isChecked,
+  onCheck,
 }: {
-  name: string
-  type: string
-  onClick: () => void
+  name: string;
+  type: string;
+  onClick: () => void;
+  isChecked: boolean;
+  onCheck: (checked: boolean) => void;
 }) => {
-  const [isChecked, setIsChecked] = useState(false)
-
   return (
     <div className="flex items-center gap-4">
       <span
         className={`w-6 h-6 border-solid border-2 border-dong_light_gray rounded-full transition-all duration-200 ${
           isChecked ? "bg-dong_secondary" : ""
         }`}
-        onClick={() => {
-          setIsChecked(!isChecked)
-        }}
+        onClick={() => onCheck(!isChecked)}
       />
       <div className="w-[19rem] h-32 border-solid border-2 border-dong_light_gray rounded-[1.25rem] flex relative gap-[1.111rem] items-center">
         <div className="w-[6.577rem] h-[6.096rem] bg-dong_light_gray rounded-lg ml-5"></div>
@@ -40,5 +38,5 @@ export const BookmarkItem = ({
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

@@ -5,6 +5,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import { FaUser } from "react-icons/fa6";
 import { FaBars } from "react-icons/fa6";
 import { CiSettings } from "react-icons/ci";
+import Xicon from "../../assets/images/x.svg";
 
 import { CategoryItem } from "../../components/CategoryItem";
 import { ExitCheckModal } from "../../components/ExitCheck";
@@ -108,12 +109,12 @@ export const Header = () => {
           <div className="w-full h-full">
             <input
               type="text"
-              className="border- dong_light_gray border-solid border-[0.094rem] w-full h-full pl-10 placeholder-dong_black placeholder-bold rounded-lg text-sm"
+              className="box-border border-solid border-2 h-full px-10 placeholder-dong_black placeholder-bold rounded-lg text-sm"
               placeholder="가게명/동네를 입력하세요"
             />
           </div>
-          <div className="absolute top-1/2  right-5 transform -translate-y-1/2">
-            <span className="text-dong_light_gray">X</span>
+          <div className="absolute top-1/2  right-5 transform -translate-y-1/2 ">
+            <img src={Xicon} />
           </div>
         </div>
         <div className="flex items-center">

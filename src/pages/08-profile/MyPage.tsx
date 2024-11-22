@@ -1,13 +1,13 @@
-import { useNavigate } from "react-router-dom"
-import { ActionButtons } from "../../components/ActionButtons"
-import { MyCollection } from "../../components/MyCollection"
+import { useNavigate } from "react-router-dom";
+import { ActionButtons } from "../../components/ActionButtons";
+import { MyCollection } from "../../components/MyCollection";
 
 export const MyPage = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div>
-      <div className="mt-20">
+      <div className="mt-24">
         <div className="flex items-center mb-5 ml-9">
           <div className="w-[4.5rem] h-[4.5rem] rounded-[100%] bg-dong_light_gray"></div>
           <div className="ml-[1.375rem]">
@@ -36,7 +36,7 @@ export const MyPage = () => {
         <div className="mt-4 mb-8 text-center">
           <ActionButtons
             onClick={() => {
-              navigate("/")
+              navigate("/");
             }}
             disabled={false}
           >
@@ -48,7 +48,7 @@ export const MyPage = () => {
             <MyCollection
               collection={"리뷰"}
               onClick={() => {
-                navigate("/circle-me/review")
+                navigate("/circle-me/review");
               }}
             />
           </div>
@@ -56,12 +56,12 @@ export const MyPage = () => {
             <MyCollection
               collection={"북마크"}
               onClick={() => {
-                navigate("/circle-me/bookmark")
+                navigate("/circle-me/bookmark");
               }}
             />
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

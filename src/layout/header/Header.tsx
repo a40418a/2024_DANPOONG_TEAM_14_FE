@@ -189,16 +189,16 @@ export const Header = () => {
           <div></div>
         ) : (
           <div
-            className="flex flex-col justify-center"
+            className="flex flex-col justify-center fixed right-5 top-9"
             onClick={() => {
               navigate("/circle-me/profile/edit");
             }}
           >
             <div>
-              <CiSettings className="text-dong_light_gray w-[1.375rem] h-[1.375rem]" />
+              <CiSettings className="text-dong_deep_gray w-[1.375rem] h-[1.375rem]" />
             </div>
             <div>
-              <span className="text-dong_light_gray text-xs font-bold">
+              <span className="text-dong_deep_gray text-xs font-bold">
                 수정
               </span>
             </div>

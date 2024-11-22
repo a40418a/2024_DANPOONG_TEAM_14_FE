@@ -66,12 +66,7 @@ export const TypeSelectItem = ({
   };
 
   return (
-    <div
-      className={`w-[18.75rem] h-[5.625rem] rounded-lg border-2 ${
-        selected ? "bg-dong_primary" : "bg-dong_light_gray"
-      } border-solid hover:border-dong_primary  `}
-      onClick={onClick}
-    >
+    <div className={`w-[18.75rem] h-[5.625rem] rounded-lg  `} onClick={onClick}>
       <div
         className={`text-dong_white rounded-lg flex justify-center ${
           selected ? "bg-dong_primary" : "bg-dong_deep_gray"
@@ -80,13 +75,9 @@ export const TypeSelectItem = ({
       >
         <span className="text-sm font-bold mb-1">
           {children}
-          <span className="text-[0.375rem] ml-1">
-            {changeEng({ children })}
-          </span>
+          <span className="text-[0.6rem] ml-1">{changeEng({ children })}</span>
         </span>
-        <span className="text-[0.625rem] font-medium">
-          {makeDesc({ children })}
-        </span>
+        <span className="text-xs font-medium">{makeDesc({ children })}</span>
       </div>
     </div>
   );

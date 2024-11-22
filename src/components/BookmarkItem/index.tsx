@@ -14,13 +14,13 @@ export const BookmarkItem = ({
   return (
     <div className="flex items-center gap-4">
       <span
-        className={`w-6 h-6 border-solid border-2 border-dong_light_gray rounded-full transition-all duration-200 ${
+        className={`w-5 h-5 border-solid border-2 border-dong_light_gray rounded-full transition-all duration-200 ${
           isChecked ? "bg-dong_secondary" : ""
         }`}
         onClick={() => onCheck(!isChecked)}
       />
       <div className="w-[19rem] h-32 border-solid border-2 border-dong_light_gray rounded-[1.25rem] flex relative gap-[1.111rem] items-center">
-        <div className="w-[6.577rem] h-[6.096rem] bg-dong_light_gray rounded-lg ml-5"></div>
+        <div className="w-24 h-24 bg-dong_light_gray rounded-lg ml-5"></div>
         <div>
           <div>
             <span className="text-sm leading-5 font-bold">{name}</span>
@@ -32,7 +32,7 @@ export const BookmarkItem = ({
           </div>
         </div>
         <div className="absolute top-3 right-3" onClick={onClick}>
-          <span className="text-dong_light_gray text-[0.625rem] font-bold underline">
+          <span className="text-dong_deep_gray text-[0.625rem] font-bold underline">
             삭제
           </span>
         </div>

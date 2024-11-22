@@ -1,16 +1,16 @@
-import { Outlet, useLocation } from "react-router-dom"
+import { Outlet, useLocation } from "react-router-dom";
 
-import { Header } from "./header/Header"
-import { Footer } from "./footer/Footer"
+import { Header } from "./header/Header";
+import { Footer } from "./footer/Footer";
 
 export const Layout = () => {
-  const location = useLocation()
+  const location = useLocation();
 
   return (
     <div className="relative">
-      <div className="text-dong_black w-[24.375rem] text-sm font-normal">
+      <div className="text-dong_black w-full text-sm font-normal">
         <div
-          className={`fixed top-0 left-0 z-10 w-full ${
+          className={`fixed top-0 left-0 z-10 ${
             location.pathname.includes("/types") ||
             location.pathname.includes("/category") ||
             location.pathname.includes("/bookmark") ||
@@ -31,5 +31,5 @@ export const Layout = () => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};

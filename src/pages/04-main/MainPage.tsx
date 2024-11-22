@@ -1,4 +1,4 @@
-import { KakaoMap } from "../../components/KakaoMap"
+import { KakaoMap } from "../../components/KakaoMap";
 
 export const MainPage = () => {
   return (
@@ -7,5 +7,5 @@ export const MainPage = () => {
         <KakaoMap />
       </div>
     </div>
-  )
-}
+  );
+};

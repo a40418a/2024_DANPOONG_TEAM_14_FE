@@ -246,11 +246,7 @@ export const Header = () => {
     return (
       <>
         <div className="w-screen h-24 flex justify-between items-center py-4 px-5 border-b-[0.031rem] border-dong_deep_gray">
-          <img
-            src="../src/assets/images/x.svg"
-            alt="x"
-            onClick={() => setShowPopup(true)}
-          />
+          <img src={Xicon} alt="x" onClick={() => setShowPopup(true)} />
           <div className="text-dong_deep_gray">새 게시물</div>
           <div
             className="text-dong_deep_gray font-bold"

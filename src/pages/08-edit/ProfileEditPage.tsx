@@ -77,7 +77,7 @@ export const ProfileEditPage = () => {
               navigate("/circle-me/profile/edit/types");
             }}
           >
-            <span className="text-dong_deep_gray text-xs font-bold leading-5">
+            <span className="text-dong_light_black text-xs font-bold leading-5">
               변경하기
             </span>
           </div>

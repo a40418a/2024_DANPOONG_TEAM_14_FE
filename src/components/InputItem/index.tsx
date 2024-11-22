@@ -13,7 +13,7 @@ export const InputItem = ({
     return (
       <div>
         <select
-          className={`rounded-lg text-sm text-dong_deep_gray placeholder-bold placeholder-dong_deep_gray border-dong_deep_gray border-solid border-2 bg-dong_white`}
+          className={`rounded-lg text-sm text-dong_deep_gray placeholder-bold placeholder-dong_deep_gray border-dong_deep_gray border-solid border-[0.0625rem] bg-dong_white`}
           style={{ width: `${width}px`, height: `${height}px` }}
         >
           <option value="male">남성</option>
@@ -27,7 +27,7 @@ export const InputItem = ({
     <div>
       <input
         type={type}
-        className={`rounded-lg text-sm placeholder-bold placeholder-dong_deep_gray border-dong_deep_gray border-solid border-2 pl-5`}
+        className={`rounded-lg text-sm placeholder-bold placeholder-dong_deep_gray border-dong_deep_gray border-solid border-[0.0625rem] pl-5`}
         placeholder={placeholder}
         style={{ width: `${width}px`, height: `${height}px` }}
       />

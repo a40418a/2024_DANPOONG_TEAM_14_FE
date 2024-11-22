@@ -20,7 +20,7 @@ export const ReviewSubmitPage = () => {
     input.type = "file";
     input.accept = "image/*";
     input.multiple = true;
-    input.onchange = (e) => {
+    input.onchange = () => {
       const files = Array.from(input.files || []);
       if (files.length + selectImg.length > 3) {
         alert("최대 3개의 이미지만 선택할 수 있습니다.");
@@ -67,7 +67,7 @@ export const ReviewSubmitPage = () => {
           placeholder="가게명을 입력해주세요."
         />
         <textarea
-          className="mt-5 w-full h-48 placeholder-dong_deep_gray resize-none"
+          className="mt-5 w-full h-48 placeholder-dong_light_black resize-none"
           placeholder="내용을 입력해주세요."
         />
         {/* 선택된 이미지 미리보기 */}

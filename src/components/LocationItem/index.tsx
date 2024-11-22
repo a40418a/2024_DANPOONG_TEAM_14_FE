@@ -10,9 +10,9 @@ export const LocationItem = ({
   restaurant: string;
 }) => {
   return (
-    <div className="w-32 h-32 bg-dong_light_gray rounded-lg flex flex-col p-2 box-border">
-      <div className="w-full h-24 bg-dong_deep_gray rounded-lg "></div>
-      <div className="flex flex-col ml-3">
+    <div className="w-32 h-32 bg-dong_light_gray rounded-lg flex flex-col box-border">
+      <div className="w-full h-24 bg-dong_deep_gray rounded-t-lg "></div>
+      <div className="flex flex-col px-3 py-1">
         <div className="">
           {usage === "리뷰" ? (
             <span className="text-[0.5rem] text-dong_secondary">{state}</span>

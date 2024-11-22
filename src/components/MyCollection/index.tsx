@@ -29,20 +29,20 @@ export const MyCollection = ({
           {title({ collection })}
         </span>
       </div>
-      <div className="w-[20.563rem] h-auto border-solid border-2 border-dong_light_gray rounded-[1.25rem] p-4 box-border">
+      <div className="w-[20.563rem] h-auto border-solid border-2 border-dong_light_gray rounded-[1.25rem] p-3 box-border">
         <div
-          className="flex items-center mr-5 mb-6 justify-between"
+          className="flex items-center mb-3 justify-between"
           onClick={onClick}
         >
           <div>
-            <span className="text-sm font-bold leading-5">{subTitle}</span>
+            <span className="text-sm font-bold ">{subTitle}</span>
           </div>
           <div>
             <IoIosArrowForward />
           </div>
         </div>
         <div className="">
-          <ul className="flex items-center gap-[0.548rem] overflow-x-scroll">
+          <ul className="flex items-center gap-2 overflow-x-scroll">
             <li>
               <LocationItem
                 usage={collection}

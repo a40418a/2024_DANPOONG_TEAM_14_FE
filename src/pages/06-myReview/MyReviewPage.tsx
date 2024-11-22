@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { ReviewItem } from "../../components/ReviewItem";
 import { CheckPopup } from "../../components/CheckPopup";
@@ -43,6 +43,14 @@ export const MyReviewPage = () => {
 
   const [usage, setUsage] = useState<string>("");
 
+  useEffect(() => {
+    if (showPopup) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [showPopup]);
+
   const handleDeleteReview = (index: number | null) => {
     setReviewInfo((prev) => prev.filter((_, i) => i !== index));
   };
@@ -83,7 +91,7 @@ export const MyReviewPage = () => {
         </ul>
       </div>
       {showPopup && (
-        <div className="w-full h-screen fixed top-0 flex justify-center items-center">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <CheckPopup
             usage={usage}
             onClick={(e) => {

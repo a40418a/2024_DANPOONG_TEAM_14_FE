@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { BookmarkItem } from "../../components/BookmarkItem";
 import { ActionButtons } from "../../components/ActionButtons";
@@ -27,6 +27,14 @@ export const BookmarkPage = () => {
   const [checkedIndexes, setCheckedIndexes] = useState<number[]>([]);
   const [showPopup, setShowPopup] = useState(false);
   const [deletedIndex, setDeletedIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (showPopup) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [showPopup]);
 
   const handleCheck = (index: number, checked: boolean) => {
     setCheckedIndexes((prev) =>
@@ -82,7 +90,7 @@ export const BookmarkPage = () => {
             }
           }}
         >
-          <span className="text-xs font-bold text-dong_deep_gray underline">
+          <span className="text-xs font-bold text-dong_light_black underline">
             전체 삭제
           </span>
         </div>
@@ -118,7 +126,7 @@ export const BookmarkPage = () => {
         </ActionButtons>
       </div>
       {showPopup && (
-        <div className="w-full h-screen fixed flex justify-center items-center">
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <CheckPopup
             usage="delete"
             onClick={(e: React.MouseEvent<HTMLInputElement>) =>

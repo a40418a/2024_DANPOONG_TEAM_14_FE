@@ -70,12 +70,14 @@ export const TypeSelectItem = ({
       <div
         className={`text-dong_white rounded-lg flex justify-center ${
           selected ? "bg-dong_primary" : "bg-dong_deep_gray"
-        } flex flex-col h-full px-8 py-5 `}
+        } flex flex-col h-full p-3`}
         onClick={onClick}
       >
         <span className="text-sm font-bold mb-1">
           {children}
-          <span className="text-[0.6rem] ml-1">{changeEng({ children })}</span>
+          <span className="text-[0.625rem] ml-1">
+            {changeEng({ children })}
+          </span>
         </span>
         <span className="text-xs font-medium">{makeDesc({ children })}</span>
       </div>

@@ -15,7 +15,7 @@ export const Footer = () => {
     location.pathname.includes("/category")
   ) {
     return (
-      <div className="w-full h-[3.75rem] m-auto fixed bottom-0">
+      <div className="w-full h-[3.75rem] m-auto fixed bottom-0 bg-dong_white">
         <ul className="flex h-full justify-center items-center gap-14">
           <li
             onClick={() => {

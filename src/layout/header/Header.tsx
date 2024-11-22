@@ -181,7 +181,7 @@ export const Header = () => {
               navigate("./circle-me/profile");
             }}
           >
-            <span className="text-base text-dong_deep_gray font-bold leading-5">
+            <span className="text-base text-dong_deep_gray font-bold leading-5  fixed right-5 top-9">
               저장
             </span>
           </div>

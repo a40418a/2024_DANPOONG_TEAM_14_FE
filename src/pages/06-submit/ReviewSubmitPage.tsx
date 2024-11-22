@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+
 import classNames from "classnames";
 import GalleryIcon from "../../assets/images/gallery.svg";
-import { ActionButtons } from "../../components/ActionButtons";
 
 export const ReviewSubmitPage = () => {
-  const navigate = useNavigate();
   const [selected, setSelected] = useState<string | null>(null);
   const [keyboard, setKeyboard] = useState<number>(0);
 

@@ -1,35 +1,35 @@
-import { useLocation, useNavigate } from "react-router-dom"
-import { useState } from "react"
+import { useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-import { IoIosArrowBack } from "react-icons/io"
-import { FaUser } from "react-icons/fa6"
-import { FaBars } from "react-icons/fa6"
-import { CiSettings } from "react-icons/ci"
+import { IoIosArrowBack } from "react-icons/io";
+import { FaUser } from "react-icons/fa6";
+import { FaBars } from "react-icons/fa6";
+import { CiSettings } from "react-icons/ci";
 
-import { CategoryItem } from "../../components/CategoryItem"
-import { ExitCheckModal } from "../../components/ExitCheck"
-import { useStoreType } from "../../hooks/useStoreType"
-import { useGetHeaderTitle } from "../../hooks/useGetHeaderTitle"
+import { CategoryItem } from "../../components/CategoryItem";
+import { ExitCheckModal } from "../../components/ExitCheck";
+import { useStoreType } from "../../hooks/useStoreType";
+import { useGetHeaderTitle } from "../../hooks/useGetHeaderTitle";
 
 export const Header = () => {
-  const location = useLocation()
-  const navigate = useNavigate()
-  const storeType = useStoreType()
-  const headerTitle = useGetHeaderTitle()
-  const [isModal, setIsModal] = useState(false)
+  const location = useLocation();
+  const navigate = useNavigate();
+  const storeType = useStoreType();
+  const headerTitle = useGetHeaderTitle();
+  const [isModal, setIsModal] = useState(false);
 
   const handleExit = () => {
-    setIsModal(true)
-  }
+    setIsModal(true);
+  };
   const handleConfirmExit = () => {
-    setIsModal(false)
+    setIsModal(false);
     // 어디로 움직일 것인가?
-    navigate("/circle-me")
-  }
+    navigate("/circle-me");
+  };
 
   const handleCancleExit = () => {
-    setIsModal(false)
-  }
+    setIsModal(false);
+  };
 
   if (
     location.pathname === "/accept" ||
@@ -38,21 +38,21 @@ export const Header = () => {
     location.pathname === "/circle-me/bookmark"
   ) {
     return (
-      <div className="w-[24.563rem] h-auto m-auto">
-        <div className="flex bg-cir_white relative justify-center items-center pt-7">
+      <div className="w-[24.563rem] h-28 m-auto bg-dong_white">
+        <div className="flex relative justify-center items-center pt-7">
           <div
-            className="absolute left-9 top-[3.75rem] "
+            className="absolute left-9 top-[3.75rem]  "
             onClick={() => {
               if (location.pathname === "/types") {
-                navigate("/accept")
+                navigate("/accept");
               } else if (location.pathname === "/accept") {
-                navigate("/login")
+                navigate("/login");
               } else if (
                 location.pathname === "/circle-me/profile/edit/types"
               ) {
-                navigate("/circle-me/profile/edit")
+                navigate("/circle-me/profile/edit");
               } else if (location.pathname === "/circle-me/bookmark") {
-                navigate("/circle-me")
+                navigate("/circle-me");
               }
             }}
           >
@@ -80,13 +80,13 @@ export const Header = () => {
             </div>
           )}
           {location.pathname === "/types" && (
-            <div className="flex absolute right-9 top-[3.75rem]">
-              <div>
-                <span className="text-sm font-bold text-dong_light_gray">
+            <div className="flex absolute right-9 top-[3.75rem] ">
+              <div className="flex items-center">
+                <span className="text-sm font-bold text-dong_deep_gray">
                   Kakao
                 </span>
               </div>
-              <div className="w-6 h-6 bg-dong_light_gray rounded-lg flex items-center justify-center ml-2">
+              <div className="w-6 h-6 bg-dong_deep_gray rounded-full flex items-center justify-center ml-2">
                 <div>
                   <FaUser className="text-dong_white" />
                 </div>
@@ -95,12 +95,12 @@ export const Header = () => {
           )}
         </div>
       </div>
-    )
+    );
   }
 
   if (location.pathname === "/circle-me") {
     return (
-      <div className="w-[24.563rem] h-36 flex flex-col items-center m-auto">
+      <div className="w-[24.563rem] h-28 flex flex-col items-center m-auto bg-dong_white">
         <div className="w-[21.25rem] h-14  relative mt-10 flex mb-4">
           <div className="absolute top-1/2  left-4 transform -translate-y-1/2 flex justify-center items-center">
             <IoIosArrowBack className="text-dong_deep_gray text-xl" />
@@ -145,7 +145,7 @@ export const Header = () => {
           </ul>
         </div>
       </div>
-    )
+    );
   }
 
   if (
@@ -153,7 +153,7 @@ export const Header = () => {
     location.pathname.includes("/review")
   ) {
     return (
-      <div className="w-[21.25rem] flex gap-28 justify-center mt-7 m-auto">
+      <div className="w-[21.25rem] h-28 flex gap-28 justify-center mt-7 m-auto bg-dong_white">
         <div className="flex flex-col gap-1 items-center">
           <div>
             <FaBars className="text-dong_deep_gray w-[1.125rem]" />
@@ -163,9 +163,9 @@ export const Header = () => {
               className="text-dong_deep_gray text-xl"
               onClick={() => {
                 if (location.pathname.includes("/edit")) {
-                  navigate("/circle-me/profile")
+                  navigate("/circle-me/profile");
                 } else {
-                  navigate("/circle-me")
+                  navigate("/circle-me");
                 }
               }}
             />
@@ -179,7 +179,7 @@ export const Header = () => {
         {location.pathname === "/circle-me/profile/edit" ? (
           <div
             onClick={() => {
-              navigate("./circle-me/profile")
+              navigate("./circle-me/profile");
             }}
           >
             <span className="text-base text-dong_deep_gray font-bold leading-5">
@@ -192,7 +192,7 @@ export const Header = () => {
           <div
             className="flex flex-col justify-center"
             onClick={() => {
-              navigate("/circle-me/profile/edit")
+              navigate("/circle-me/profile/edit");
             }}
           >
             <div>
@@ -206,12 +206,12 @@ export const Header = () => {
           </div>
         )}
       </div>
-    )
+    );
   }
 
   if (location.pathname.includes("/surroundings")) {
     return (
-      <div className="flex flex-col justify-center items-center">
+      <div className="flex flex-col justify-center items-center bg-dong_white h-28">
         <div className="mb-6 mt-7">
           <span className="text-sm text-dong_deep_gray font-bold">
             {location.pathname.includes("type") ? "유형 탐색" : "주변 탐색"}
@@ -222,7 +222,7 @@ export const Header = () => {
             <div
               className="absolute top-1/2  left-4 transform -translate-y-1/2 flex justify-center items-center"
               onClick={() => {
-                navigate("/circle-me")
+                navigate("/circle-me");
               }}
             >
               <IoIosArrowBack className="text-dong_deep_gray text-xl" />
@@ -240,18 +240,18 @@ export const Header = () => {
           </div>
         )}
       </div>
-    )
+    );
   }
 
   if (location.pathname.includes("/submit")) {
     return (
       <>
-        <div className="flex justify-between items-center py-4 px-5 border-b-[0.031rem] border-dong_deep_gray">
+        <div className="flex justify-between items-center py-4 px-5 border-b-[0.031rem] h-28 border-dong_deep_gray">
           <img src="../src/assets/images/x.svg" alt="x" onClick={handleExit} />
           <div
             className="text-dong_deep_gray text-sm"
             onClick={() => {
-              navigate("/circle-me")
+              navigate("/circle-me");
             }}
           >
             등록
@@ -263,8 +263,8 @@ export const Header = () => {
           onCancel={handleCancleExit}
         />
       </>
-    )
+    );
   }
 
-  return null
-}
+  return null;
+};

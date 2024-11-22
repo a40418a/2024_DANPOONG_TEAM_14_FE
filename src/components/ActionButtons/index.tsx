@@ -1,20 +1,21 @@
-import { useLocation } from "react-router-dom"
+import { useLocation } from "react-router-dom";
 
 export const ActionButtons = ({
   children,
   onClick,
   disabled = false,
 }: {
-  children: React.ReactNode
-  onClick: () => void
-  disabled: boolean
+  children: React.ReactNode;
+  onClick: () => void;
+  disabled: boolean;
 }) => {
-  const location = useLocation()
+  const location = useLocation();
 
   if (
     children === "다음" ||
     children === "완료" ||
-    children === "선택 삭제하기"
+    children === "선택 삭제하기" ||
+    children === "리뷰 수정하기"
   ) {
     return (
       <button
@@ -26,7 +27,7 @@ export const ActionButtons = ({
       >
         {children}
       </button>
-    )
+    );
   } else if (children === "로그아웃") {
     return (
       <button
@@ -40,7 +41,7 @@ export const ActionButtons = ({
       >
         {children}
       </button>
-    )
+    );
   } else if (children === "회원탈퇴") {
     return (
       <button
@@ -50,7 +51,7 @@ export const ActionButtons = ({
       >
         {children}
       </button>
-    )
+    );
   }
 
   if (children === "주변 탐색하기" || children === "이동약자 탐색하기") {
@@ -64,7 +65,7 @@ export const ActionButtons = ({
       >
         <span className="text-lg font-bold text-dong_white">{children}</span>
       </button>
-    )
+    );
   }
 
   if (location.pathname.includes("/type")) {
@@ -75,7 +76,7 @@ export const ActionButtons = ({
       >
         <span className=" text-dong_white font-bold">{children}</span>
       </button>
-    )
+    );
   }
 
   if (location.pathname.includes("/theme")) {
@@ -87,7 +88,7 @@ export const ActionButtons = ({
       >
         <span className="text-lg text-dong_white font-bold">{children}</span>
       </button>
-    )
+    );
   }
 
   return (
@@ -98,5 +99,5 @@ export const ActionButtons = ({
     >
       <span className="text-dong_white font-bold text-sm">{children}</span>
     </button>
-  )
-}
+  );
+};

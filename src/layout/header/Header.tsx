@@ -8,7 +8,7 @@ import { CiSettings } from "react-icons/ci";
 import Xicon from "../../assets/images/x.svg";
 
 import { CategoryItem } from "../../components/CategoryItem";
-import { ExitCheckModal } from "../../components/ExitCheck";
+import { CheckPopup } from "../../components/CheckPopup";
 import { useStoreType } from "../../hooks/useStoreType";
 import { useGetHeaderTitle } from "../../hooks/useGetHeaderTitle";
 
@@ -17,19 +17,17 @@ export const Header = () => {
   const navigate = useNavigate();
   const storeType = useStoreType();
   const headerTitle = useGetHeaderTitle();
-  const [isModal, setIsModal] = useState(false);
 
-  const handleExit = () => {
-    setIsModal(true);
-  };
-  const handleConfirmExit = () => {
-    setIsModal(false);
-    // 어디로 움직일 것인가?
-    navigate("/circle-me");
-  };
+  const [showPopup, setShowPopup] = useState(false);
 
-  const handleCancleExit = () => {
-    setIsModal(false);
+  const handlePopupClick = (e: React.MouseEvent<HTMLInputElement>) => {
+    const buttonText = e.currentTarget.textContent;
+    if (buttonText === "예") {
+      navigate("/circle-me/review");
+    } else if (buttonText === "아니요") {
+      setShowPopup(false);
+    }
+    setShowPopup(false); // 모달 닫기
   };
 
   if (
@@ -248,9 +246,14 @@ export const Header = () => {
     return (
       <>
         <div className="w-screen h-24 flex justify-between items-center py-4 px-5 border-b-[0.031rem] border-dong_deep_gray">
-          <img src="../src/assets/images/x.svg" alt="x" onClick={handleExit} />
+          <img
+            src="../src/assets/images/x.svg"
+            alt="x"
+            onClick={() => setShowPopup(true)}
+          />
+          <div className="text-dong_deep_gray">새 게시물</div>
           <div
-            className="text-dong_deep_gray text-sm"
+            className="text-dong_deep_gray font-bold"
             onClick={() => {
               navigate("/circle-me");
             }}
@@ -258,11 +261,16 @@ export const Header = () => {
             등록
           </div>
         </div>
-        <ExitCheckModal
-          isOpen={isModal}
-          onConfirm={handleConfirmExit}
-          onCancel={handleCancleExit}
-        />
+        {showPopup && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+            <CheckPopup
+              usage="delete"
+              onClick={(e: React.MouseEvent<HTMLInputElement>) =>
+                handlePopupClick(e)
+              }
+            />
+          </div>
+        )}
       </>
     );
   }

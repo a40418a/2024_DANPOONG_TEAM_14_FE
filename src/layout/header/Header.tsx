@@ -234,7 +234,7 @@ export const Header = () => {
               />
             </div>
             <div className="absolute top-1/2  right-5 transform -translate-y-1/2">
-              <span className="text-dong_light_gray">X</span>
+              <img src={Xicon} />
             </div>
           </div>
         )}

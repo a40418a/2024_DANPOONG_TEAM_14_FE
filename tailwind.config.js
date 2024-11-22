@@ -10,6 +10,7 @@ export default {
         dong_light_gray: "#F1F1F1",
         dong_deep_gray: "#CDCDCD",
         dong_black: "#000000",
+        dong_light_black: "#989898",
 
         dong_light_yellow: "#fff3cf",
         dong_green: "#34a853",

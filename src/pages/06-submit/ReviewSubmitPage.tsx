@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 
 import classNames from "classnames";
 import GalleryIcon from "../../assets/images/gallery.svg";
+import Xicon from "../../assets/images/x.svg";
 
 export const ReviewSubmitPage = () => {
   const [selected, setSelected] = useState<string | null>(null);
-  const [keyboard, setKeyboard] = useState<number>(0);
+  const [selectImg, setSelectImg] = useState<File[]>([]);
+  const [keyboardHeight, setKeyboardHeight] = useState<number>(0);
 
   const options = [
     { id: "comfortable", label: "편했어요" },
@@ -13,26 +15,50 @@ export const ReviewSubmitPage = () => {
     { id: "uncomfortable", label: "불편했어요" },
   ];
 
-  // 키보드 감지
-  useEffect(() => {
-    const handleSize = () => {
-      const viewportHeight = window.innerHeight;
-      const fullHeight = document.documentElement.clientHeight;
+  const openGallery = () => {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*";
+    input.multiple = true;
+    input.onchange = (e) => {
+      const files = Array.from(input.files || []);
+      if (files.length + selectImg.length > 3) {
+        alert("최대 3개의 이미지만 선택할 수 있습니다.");
+        return;
+      }
+      setSelectImg((prev) => [...prev, ...files]);
+    };
+    input.click();
+  };
 
-      // 키보드가 올라가 있으면 화면 높이 변화 감지
-      if (viewportHeight < fullHeight) {
-        setKeyboard(fullHeight - viewportHeight); // 키보드 높이만큼 offset 설정
-      } else {
-        setKeyboard(0); // 키보드 내려가면 offset 초기화
+  const removeImage = (index: number) => {
+    setSelectImg((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  useEffect(() => {
+    const handleViewportChange = () => {
+      if (window.visualViewport) {
+        const offset = window.visualViewport.height - window.innerHeight;
+        setKeyboardHeight(offset > 0 ? offset : 0); // 키보드 높이 설정
       }
     };
 
-    window.addEventListener("resize", handleSize);
-    return () => window.removeEventListener("resize", handleSize);
+    // Visual Viewport 이벤트 리스너 추가
+    window.visualViewport?.addEventListener("resize", handleViewportChange);
+
+    // 초기 상태 설정
+    handleViewportChange();
+
+    return () => {
+      window.visualViewport?.removeEventListener(
+        "resize",
+        handleViewportChange,
+      );
+    };
   }, []);
 
   return (
-    <div className="flex flex-col mt-24 px-5">
+    <div className="flex flex-col mt-24 px-5 box-border">
       {/* 입력 부분 */}
       <div>
         <input
@@ -41,18 +67,36 @@ export const ReviewSubmitPage = () => {
           placeholder="가게명을 입력해주세요."
         />
         <textarea
-          className="mt-5 w-full h-52 placeholder-dong_deep_gray resize-none"
+          className="mt-5 w-full h-48 placeholder-dong_deep_gray resize-none"
           placeholder="내용을 입력해주세요."
         />
+        {/* 선택된 이미지 미리보기 */}
+        <div className="mt-5 flex gap-3">
+          {selectImg.map((file, index) => (
+            <div key={index} className="relative">
+              <img
+                src={URL.createObjectURL(file)}
+                alt={`selected-${index}`}
+                className="w-28 h-28 object-cover rounded-lg"
+              />
+              <button
+                className="absolute top-1 right-1 w-5 h-5 "
+                onClick={() => removeImage(index)}
+              >
+                <img src={Xicon} alt="remove" />
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* 하단 부분 */}
       <div
         className="fixed w-full transition-transform duration-300"
-        style={{ bottom: `${keyboard}px` }}
+        style={{ bottom: `${keyboardHeight}px` }}
       >
         {/* 버튼 */}
-        <div className="flex gap-4 my-4">
+        <div className="flex gap-3 my-4">
           {options.map((option) => (
             <div
               key={option.id}
@@ -70,9 +114,11 @@ export const ReviewSubmitPage = () => {
           ))}
         </div>
         {/* 첨부파일 */}
-        <div className="py-4 flex gap-2 items-center border-solid border-t-2 border-dong_light_gray">
-          <img src={GalleryIcon} alt="gallery" />
-          <span className="text-dong_deep_gray text-xs">0/10</span>
+        <div className="py-4 flex gap-2 items-center border-solid border-t-[0.0625rem] border-dong_light_gray">
+          <img src={GalleryIcon} alt="gallery" onClick={openGallery} />
+          <span className="text-dong_deep_gray text-xs">
+            {selectImg.length}/3
+          </span>
         </div>
       </div>
     </div>

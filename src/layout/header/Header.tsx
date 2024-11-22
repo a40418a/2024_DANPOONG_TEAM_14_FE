@@ -39,7 +39,7 @@ export const Header = () => {
     location.pathname === "/circle-me/bookmark"
   ) {
     return (
-      <div className="w-[24.563rem] h-28 m-auto bg-dong_white">
+      <div className="w-screen h-24 m-auto bg-dong_white">
         <div className="flex relative justify-center items-center pt-7">
           <div
             className="absolute left-9 top-[3.75rem]  "
@@ -101,7 +101,7 @@ export const Header = () => {
 
   if (location.pathname === "/circle-me") {
     return (
-      <div className="w-[24.563rem] h-28 flex flex-col items-center m-auto bg-dong_white">
+      <div className="w-screen h-24 flex flex-col items-center m-auto bg-dong_white">
         <div className="w-[21.25rem] h-14  relative mt-10 flex mb-4">
           <div className="absolute top-1/2  left-4 transform -translate-y-1/2 flex justify-center items-center">
             <IoIosArrowBack className="text-dong_deep_gray text-xl" />
@@ -154,8 +154,8 @@ export const Header = () => {
     location.pathname.includes("/review")
   ) {
     return (
-      <div className="w-[21.25rem] h-28 flex gap-28 justify-center mt-7 m-auto bg-dong_white">
-        <div className="flex flex-col gap-1 items-center">
+      <div className="w-screen h-24 flex justify-center items-center bg-dong_white box-border">
+        <div className="flex flex-col items-center fixed left-5 top-10 gap-1">
           <div>
             <FaBars className="text-dong_deep_gray w-[1.125rem]" />
           </div>
@@ -212,7 +212,7 @@ export const Header = () => {
 
   if (location.pathname.includes("/surroundings")) {
     return (
-      <div className="flex flex-col justify-center items-center bg-dong_white h-28">
+      <div className="w-screen h-24 flex flex-col justify-center items-center bg-dong_white">
         <div className="mb-6 mt-7">
           <span className="text-sm text-dong_deep_gray font-bold">
             {location.pathname.includes("type") ? "유형 탐색" : "주변 탐색"}
@@ -247,7 +247,7 @@ export const Header = () => {
   if (location.pathname.includes("/submit")) {
     return (
       <>
-        <div className="flex justify-between items-center py-4 px-5 border-b-[0.031rem] h-28 border-dong_deep_gray">
+        <div className="w-screen h-24 flex justify-between items-center py-4 px-5 border-b-[0.031rem] border-dong_deep_gray">
           <img src="../src/assets/images/x.svg" alt="x" onClick={handleExit} />
           <div
             className="text-dong_deep_gray text-sm"

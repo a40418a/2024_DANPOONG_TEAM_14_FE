@@ -1,9 +1,9 @@
-import { ActionButtons } from "../../components/ActionButtons"
-import { useNavigate } from "react-router-dom"
-import logo from "../../assets/images/logo.svg"
+import { ActionButtons } from "../../components/ActionButtons";
+import { useNavigate } from "react-router-dom";
+import logo from "../../assets/images/logo.svg";
 
 export const StartPage = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div className="flex flex-col items-center">
@@ -18,10 +18,10 @@ export const StartPage = () => {
         <span>가입해 주셔서 감사합니다.</span>
         <span>즐거운 여행을 도와드릴게요!</span>
       </div>
-      <div className="mt-48">
+      <div className="mt-48 fixed bottom-5">
         <ActionButtons
           onClick={() => {
-            navigate("/circle-me")
+            navigate("/circle-me");
           }}
           disabled={false}
         >
@@ -29,5 +29,5 @@ export const StartPage = () => {
         </ActionButtons>
       </div>
     </div>
-  )
-}
+  );
+};

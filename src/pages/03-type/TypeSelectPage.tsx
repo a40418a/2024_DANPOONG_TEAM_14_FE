@@ -1,26 +1,26 @@
-import { useState } from "react"
-import { useNavigate, useLocation } from "react-router-dom"
-import { TypeSelectItem } from "../../components/TypeSelectItem"
-import { ActionButtons } from "../../components/ActionButtons"
+import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { TypeSelectItem } from "../../components/TypeSelectItem";
+import { ActionButtons } from "../../components/ActionButtons";
 
 export const TypeSelectPage = () => {
-  const navigate = useNavigate()
-  const location = useLocation()
-  const [selectedItem, setSelectedItem] = useState<string | null>(null)
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [selectedItem, setSelectedItem] = useState<string | null>(null);
 
-  const isSelected = (item: string): boolean => item === selectedItem
+  const isSelected = (item: string): boolean => item === selectedItem;
 
   return (
-    <div className="flex flex-col items-center">
-      <div className="text-lg leading-6 font-bold flex flex-col justify-center mt-32">
+    <div className="flex flex-col items-center mt-28">
+      <div className="text-lg leading-6 font-bold flex flex-col justify-center items-center">
         <span>사용자님의 유형을 선택해주세요.</span>
         <span>맞춤 여행 장소를 추천해 드릴게요!</span>
       </div>
-      <ul className="flex flex-col items-center gap-5 mt-12">
+      <ul className="flex flex-col items-center gap-3 mt-3">
         <li>
           <TypeSelectItem
             onClick={() => {
-              setSelectedItem("장애인")
+              setSelectedItem("장애인");
             }}
             selected={isSelected("장애인")}
           >
@@ -30,7 +30,7 @@ export const TypeSelectPage = () => {
         <li>
           <TypeSelectItem
             onClick={() => {
-              setSelectedItem("임산부")
+              setSelectedItem("임산부");
             }}
             selected={isSelected("임산부")}
           >
@@ -40,7 +40,7 @@ export const TypeSelectPage = () => {
         <li>
           <TypeSelectItem
             onClick={() => {
-              setSelectedItem("노약자")
+              setSelectedItem("노약자");
             }}
             selected={isSelected("노약자")}
           >
@@ -50,7 +50,7 @@ export const TypeSelectPage = () => {
         <li>
           <TypeSelectItem
             onClick={() => {
-              setSelectedItem("어린이")
+              setSelectedItem("어린이");
             }}
             selected={isSelected("어린이")}
           >
@@ -58,13 +58,13 @@ export const TypeSelectPage = () => {
           </TypeSelectItem>
         </li>
       </ul>
-      <div className="text-center mt-[7.5rem]">
+      <div className="text-center fixed bottom-5">
         <ActionButtons
           onClick={() => {
             if (location.pathname === "/types") {
-              navigate("/done")
+              navigate("/done");
             } else {
-              navigate("/circle-me/profile/edit")
+              navigate("/circle-me/profile/edit");
             }
           }}
           disabled={selectedItem === null}
@@ -73,5 +73,5 @@ export const TypeSelectPage = () => {
         </ActionButtons>
       </div>
     </div>
-  )
-}
+  );
+};

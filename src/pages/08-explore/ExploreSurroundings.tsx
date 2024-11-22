@@ -1,16 +1,16 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
-import { ActionButtons } from "../../components/ActionButtons"
+import { ActionButtons } from "../../components/ActionButtons";
 
 export const ExploreSurroundings = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col pt-[18.75rem] gap-[1.875rem] items-center">
+    <div className="flex flex-col h-screen justify-center gap-8 items-center">
       <div>
         <ActionButtons
           onClick={() => {
-            navigate("/circle-me/explore/surroundings/theme")
+            navigate("/circle-me/explore/surroundings/theme");
           }}
           disabled={false}
         >
@@ -20,7 +20,7 @@ export const ExploreSurroundings = () => {
       <div>
         <ActionButtons
           onClick={() => {
-            navigate("/circle-me/explore/surroundings/type")
+            navigate("/circle-me/explore/surroundings/type");
           }}
           disabled={false}
         >
@@ -28,5 +28,5 @@ export const ExploreSurroundings = () => {
         </ActionButtons>
       </div>
     </div>
-  )
-}
+  );
+};

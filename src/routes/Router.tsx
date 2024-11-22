@@ -1,19 +1,19 @@
-import { Layout } from "../layout"
-import { Page404 } from "../pages/_404/Page404"
-import { LoginPage } from "../pages/01-login/LoginPage"
-import { AcceptPage } from "../pages/02-accept/AcceptPage"
-import { TypeSelectPage } from "../pages/08-type/TypeSelectPage"
-import { StartPage } from "../pages/03-done/StartPage"
-import { MainPage } from "../pages/04-main/MainPage"
-import { MyPage } from "../pages/08-profile/MyPage"
-import { ProfileEditPage } from "../pages/08-edit/ProfileEditPage"
-import { ExploreSurroundings } from "../pages/08-explore/ExploreSurroundings"
-import { ExploreType } from "../pages/03-exploreType/ExploreType"
-import { ExploreTheme } from "../pages/08-exploreTheme/ExploreTheme"
-import { CategoryPage } from "../pages/08-category/CategoryPage"
-import { BookmarkPage } from "../pages/05-bookmark/BookmarkPage"
-import { MyReviewPage } from "../pages/06-myReview/MyReviewPage"
-import { ReviewSubmitPage } from "../pages/06-submit/ReviewSubmitPage"
+import { Layout } from "../layout";
+import { Page404 } from "../pages/_404/Page404";
+import { LoginPage } from "../pages/01-login/LoginPage";
+import { AcceptPage } from "../pages/02-accept/AcceptPage";
+import { TypeSelectPage } from "../pages/03-type/TypeSelectPage";
+import { StartPage } from "../pages/03-done/StartPage";
+import { MainPage } from "../pages/04-main/MainPage";
+import { MyPage } from "../pages/08-profile/MyPage";
+import { ProfileEditPage } from "../pages/08-edit/ProfileEditPage";
+import { ExploreSurroundings } from "../pages/08-explore/ExploreSurroundings";
+import { ExploreType } from "../pages/03-exploreType/ExploreType";
+import { ExploreTheme } from "../pages/08-exploreTheme/ExploreTheme";
+import { CategoryPage } from "../pages/08-category/CategoryPage";
+import { BookmarkPage } from "../pages/05-bookmark/BookmarkPage";
+import { MyReviewPage } from "../pages/06-myReview/MyReviewPage";
+import { ReviewSubmitPage } from "../pages/06-submit/ReviewSubmitPage";
 
 export const routes = [
   {
@@ -44,4 +44,4 @@ export const routes = [
       { path: "circle-me/submit", element: <ReviewSubmitPage /> },
     ],
   },
-]
+];

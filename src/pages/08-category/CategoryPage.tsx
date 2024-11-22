@@ -1,15 +1,15 @@
-import { useStoreType } from "../../hooks/useStoreType"
-import { StoreInfoItem } from "../../components/StoreInfoItem"
+import { useStoreType } from "../../hooks/useStoreType";
+import { StoreInfoItem } from "../../components/StoreInfoItem";
 
 export const CategoryPage = () => {
-  const title = useStoreType()
+  const title = useStoreType();
 
   return (
     <div className="mt-24 flex flex-col">
-      <div className="mb-7 ml-11 ">
+      <div className="mb-5 ml-10">
         <span className="text-lg leading-5 font-bold">{title}</span>
       </div>
-      <div className="mb-[4.375rem]">
+      <div className="mb-16">
         <ul className="flex flex-col items-center gap-2 overflow-y-scroll">
           <li>
             <StoreInfoItem store={"스타벅스 본점"} address={"서울 영등포구"} />
@@ -32,5 +32,5 @@ export const CategoryPage = () => {
         </ul>
       </div>
     </div>
-  )
-}
+  );
+};

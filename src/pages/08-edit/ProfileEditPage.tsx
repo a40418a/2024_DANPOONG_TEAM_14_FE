@@ -1,21 +1,21 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
-import { FiCamera } from "react-icons/fi"
+import { FiCamera } from "react-icons/fi";
 
-import { ActionButtons } from "../../components/ActionButtons"
-import { InputItem } from "../../components/InputItem"
-import { TypeSelectItem } from "../../components/TypeSelectItem"
+import { ActionButtons } from "../../components/ActionButtons";
+import { InputItem } from "../../components/InputItem";
+import { TypeSelectItem } from "../../components/TypeSelectItem";
 
 export const ProfileEditPage = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col items-center mt-20">
+    <div className="flex flex-col items-center mt-24">
       <div className="mb-1">
         <div className="relative">
-          <div className="w-[4.688rem] h-[4.688rem] bg-dong_light_gray rounded-[50%]"></div>
+          <div className="w-[4.688rem] h-[4.688rem] bg-dong_deep_gray rounded-[50%]"></div>
           <div className="w-[2.313rem] h-[2.313rem] bg-dong_white rounded-[50%] absolute bottom-[-0.25rem] right-[-0.375rem] z-10 flex justify-center items-center">
-            <div className="w-[2.125rem] h-[2.125rem] bg-dong_light_gray rounded-[50%] flex justify-center items-center">
+            <div className="w-[2.125rem] h-[2.125rem] bg-dong_deep_gray rounded-[50%] flex justify-center items-center">
               <FiCamera className="w-3 h-3 text-dong_white" />
             </div>
           </div>
@@ -74,7 +74,7 @@ export const ProfileEditPage = () => {
           </div>
           <div
             onClick={() => {
-              navigate("/circle-me/profile/edit/types")
+              navigate("/circle-me/profile/edit/types");
             }}
           >
             <span className="text-dong_deep_gray text-xs font-bold leading-5">
@@ -86,33 +86,35 @@ export const ProfileEditPage = () => {
           <TypeSelectItem
             selected={true}
             onClick={() => {
-              console.log()
+              console.log();
             }}
           >
             장애인
           </TypeSelectItem>
         </div>
       </div>
-      <div className="mb-4">
-        <ActionButtons
-          onClick={() => {
-            navigate("/")
-          }}
-          disabled={false}
-        >
-          로그아웃
-        </ActionButtons>
-      </div>
-      <div>
-        <ActionButtons
-          onClick={() => {
-            navigate("/")
-          }}
-          disabled={false}
-        >
-          회원탈퇴
-        </ActionButtons>
+      <div className="fixed bottom-5">
+        <div className="mb-4">
+          <ActionButtons
+            onClick={() => {
+              navigate("/");
+            }}
+            disabled={false}
+          >
+            로그아웃
+          </ActionButtons>
+        </div>
+        <div>
+          <ActionButtons
+            onClick={() => {
+              navigate("/");
+            }}
+            disabled={false}
+          >
+            회원탈퇴
+          </ActionButtons>
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};

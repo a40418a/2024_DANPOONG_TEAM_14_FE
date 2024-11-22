@@ -69,8 +69,8 @@ export const BookmarkPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center relative">
-      <div className="pt-[7.375rem] flex items-center gap-40 mb-5">
+    <div className="flex flex-col items-center relative h-screen">
+      <div className="w-full mt-28 flex items-center justify-between mb-5 px-10">
         <div>
           <span className="text-lg font-bold leading-5">내 북마크 장소</span>
         </div>
@@ -82,13 +82,13 @@ export const BookmarkPage = () => {
             }
           }}
         >
-          <span className="text-xs font-bold text-dong_light_gray underline">
+          <span className="text-xs font-bold text-dong_deep_gray underline">
             전체 삭제
           </span>
         </div>
       </div>
-      <div className="mb-[10rem]">
-        <ul className="flex flex-col gap-2">
+      <div className="flex-1 overflow-y-auto w-full px-8">
+        <ul className="flex flex-col gap-4">
           {bookmarkStore.map((bookmark, index) => (
             <li key={index}>
               <BookmarkItem
@@ -105,7 +105,7 @@ export const BookmarkPage = () => {
           ))}
         </ul>
       </div>
-      <div className="w-[24.563rem] h-[3.75rem] text-center fixed bottom-[3.625rem]">
+      <div className="h-[3.75rem] text-center fixed bottom-5">
         <ActionButtons
           onClick={() => {
             if (checkedIndexes.length > 0) {

@@ -82,7 +82,7 @@ export const ActionButtons = ({
   if (location.pathname.includes("/theme")) {
     return (
       <button
-        className="w-[19.5rem] h-[6.875rem]  bg-dong_light_gray rounded-lg hover:bg-dong_primary"
+        className="w-[19.5rem] h-[6.875rem]  bg-dong_deep_gray rounded-lg hover:bg-dong_primary"
         onClick={onClick}
         disabled={disabled}
       >

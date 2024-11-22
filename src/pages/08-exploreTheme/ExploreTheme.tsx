@@ -1,17 +1,17 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
-import { ActionButtons } from "../../components/ActionButtons"
+import { ActionButtons } from "../../components/ActionButtons";
 
 export const ExploreTheme = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
-    <div className="pt-44">
-      <ul className="flex flex-col pt-[0.625rem] items-center gap-[0.625rem]">
+    <div className="mt-32">
+      <ul className="flex flex-col items-center gap-[0.625rem]">
         <li>
           <ActionButtons
             onClick={() => {
-              navigate("/circle-me/category/cafe")
+              navigate("/circle-me/category/cafe");
             }}
             disabled={false}
           >
@@ -21,7 +21,7 @@ export const ExploreTheme = () => {
         <li>
           <ActionButtons
             onClick={() => {
-              navigate("/circle-me/category/restaurant")
+              navigate("/circle-me/category/restaurant");
             }}
             disabled={false}
           >
@@ -31,7 +31,7 @@ export const ExploreTheme = () => {
         <li>
           <ActionButtons
             onClick={() => {
-              navigate("/circle-me/category/culture")
+              navigate("/circle-me/category/culture");
             }}
             disabled={false}
           >
@@ -41,7 +41,7 @@ export const ExploreTheme = () => {
         <li>
           <ActionButtons
             onClick={() => {
-              navigate("/circle-me/category/playground")
+              navigate("/circle-me/category/playground");
             }}
             disabled={false}
           >
@@ -51,7 +51,7 @@ export const ExploreTheme = () => {
         <li>
           <ActionButtons
             onClick={() => {
-              navigate("/circle-me/category/hotel")
+              navigate("/circle-me/category/hotel");
             }}
             disabled={false}
           >
@@ -60,5 +60,5 @@ export const ExploreTheme = () => {
         </li>
       </ul>
     </div>
-  )
-}
+  );
+};

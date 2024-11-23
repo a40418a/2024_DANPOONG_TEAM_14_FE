@@ -45,7 +45,7 @@ export const ExploreTheme = () => {
             }}
             disabled={false}
           >
-            놀이공원
+            관광명소
           </ActionButtons>
         </li>
         <li>
@@ -55,7 +55,7 @@ export const ExploreTheme = () => {
             }}
             disabled={false}
           >
-            숙박업소
+            숙박
           </ActionButtons>
         </li>
       </ul>

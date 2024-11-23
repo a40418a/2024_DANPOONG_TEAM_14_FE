@@ -2,6 +2,11 @@ import { useNavigate } from "react-router-dom";
 
 import { ActionButtons } from "../../components/ActionButtons";
 
+import jangIcon from "../../assets/images/장애인.svg";
+import noIcon from "../../assets/images/노약자.svg";
+import dogIcon from "../../assets/images/안내견보호자.svg";
+import childIcon from "../../assets/images/어린이.svg";
+
 export const ExploreType = () => {
   const navigate = useNavigate();
 
@@ -21,6 +26,7 @@ export const ExploreType = () => {
               }}
               disabled={false}
             >
+              <img src={jangIcon} alt="장애인" className="mb-4" />
               장애인
             </ActionButtons>
           </li>
@@ -31,6 +37,7 @@ export const ExploreType = () => {
               }}
               disabled={false}
             >
+              <img src={noIcon} alt="노약자" className="mb-4" />
               노약자
             </ActionButtons>
           </li>
@@ -41,6 +48,7 @@ export const ExploreType = () => {
               }}
               disabled={false}
             >
+              <img src={dogIcon} alt="안내견 보호자" className="mb-4" />
               안내견 보호자
             </ActionButtons>
           </li>
@@ -51,6 +59,7 @@ export const ExploreType = () => {
               }}
               disabled={false}
             >
+              <img src={childIcon} alt="어린이" className="mb-4" />
               어린이
             </ActionButtons>
           </li>

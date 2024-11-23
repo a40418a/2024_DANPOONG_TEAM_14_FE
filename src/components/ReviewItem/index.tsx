@@ -30,13 +30,7 @@ export const ReviewItem = ({
           <div>
             <span className="text-sm leading-5 font-bold">{store}</span>
           </div>
-          <div className="w-16 h-6 rounded-md bg-dong_primary text-center flex items-center justify-center">
-            <div>
-              <span className="text-dong_white text-[0.625rem] font-bold">
-                {state}
-              </span>
-            </div>
-          </div>
+          <img src={state} className="w-6 h-6" alt="state" />
         </div>
         <div className="w-4/5 h-auto mb-[0.625rem]">
           <span className="text-[0.625rem] font-medium inline-block leading-4">

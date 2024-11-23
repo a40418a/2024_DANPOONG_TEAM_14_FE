@@ -58,9 +58,9 @@ export const ActionButtons = ({
   if (children === "주변 탐색하기" || children === "이동약자 탐색하기") {
     return (
       <button
-        className={`w-[19.5rem] h-[6.875rem] ${
+        className={`w-48 h-48 rounded-full ${
           children === "주변 탐색하기" ? "bg-dong_primary" : "bg-dong_secondary"
-        } rounded-lg  `}
+        } `}
         onClick={onClick}
         disabled={disabled}
       >
@@ -72,7 +72,7 @@ export const ActionButtons = ({
   if (location.pathname.includes("/type")) {
     return (
       <button
-        className="w-40 h-44 bg-dong_primary rounded-lg"
+        className="w-40 h-44 bg-dong_primary rounded-lg flex justify-center items-center"
         onClick={onClick}
       >
         <span className=" text-dong_white font-bold">{children}</span>

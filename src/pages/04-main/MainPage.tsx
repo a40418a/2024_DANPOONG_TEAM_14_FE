@@ -14,7 +14,7 @@ export const MainPage = () => {
     );
   };
   return (
-    <div className="mt-24">
+    <div className="mt-28">
       <div className="flex items-center justify-center">
         <ul className="flex gap-1">
           <li>

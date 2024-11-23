@@ -12,18 +12,46 @@ export const MyPage = () => {
   const [review, setReview] = useState<number>(0);
   const [bookmark, setBookmark] = useState<number>(0);
 
+  // 사용자 정보를 가져오는 useEffect
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      try {
+        const userInfo = await getUserInfo();
+        console.log("Fetched user info:", userInfo);
+
+        // 상태 업데이트
+        setUsername(userInfo.data.username);
+        setUserType(userInfo.data.userType);
+        setProfileImageUrl(userInfo.data.profileImageUrl);
+        setReview(userInfo.data.reviewNum);
+        setBookmark(userInfo.data.bookmarkNum);
+      } catch (error) {
+        console.error("Failed to fetch user info:", error);
+        alert("사용자 정보를 불러오는데 실패했습니다.");
+      }
+    };
+
+    fetchUserInfo();
+  }, []);
+
   return (
     <div>
       <div className="mt-24">
         <div className="flex items-center mb-5 ml-9">
-          <div className="w-[4.5rem] h-[4.5rem] rounded-[100%] bg-dong_light_gray"></div>
+          <div className="w-[4.5rem] h-[4.5rem] rounded-[100%] bg-dong_light_gray">
+            <img
+              src={profileImageUrl}
+              alt="프로필 이미지"
+              className="w-full h-full object-cover"
+            />
+          </div>
           <div className="ml-[1.375rem]">
             <div>
-              <span className="text-lg font-bold leading-6">사용자 이름</span>
+              <span className="text-lg font-bold leading-6">{username}</span>
             </div>
             <div>
               <span className="text-sm text-dong_primary font-bold">
-                장애인
+                {userType}
               </span>
             </div>
           </div>

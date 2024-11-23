@@ -114,7 +114,7 @@ export const Header = () => {
           <div className="w-full h-full">
             <input
               type="text"
-              className="box-border border-solid border-2 h-full px-10 placeholder-dong_light_black placeholder-bold rounded-lg text-sm"
+              className="box-border border-solid border-2 h-14 px-10 placeholder-dong_light_black placeholder-bold rounded-lg text-sm"
               placeholder="가게명/동네를 입력하세요"
               value={xClick}
               onChange={(e) => setXClick(e.target.value)} // 상태 업데이트

@@ -46,11 +46,11 @@ export const ProfileEditPage = () => {
 
     try {
       await deleteUser();
-      // alert("회원 탈퇴가 완료되었습니다.");
+      console.log("회원 탈퇴가 완료되었습니다.");
       navigate("/"); // 탈퇴 후 홈으로 리다이렉트
     } catch (error) {
       console.error("Failed to delete account:", error);
-      // alert("회원 탈퇴에 실패했습니다. 다시 시도해주세요.");
+      console.log("회원 탈퇴에 실패했습니다. 다시 시도해주세요.");
     }
   };
 

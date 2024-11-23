@@ -1,46 +1,45 @@
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import emotion1_sel from "../../assets/images/emotion-1-sel.svg";
-// import emotion1_nsel from "../../assets/images/emotion-1-nsel.svg";
-// import emotion2_sel from "../../assets/images/emotion-2-sel.svg";
+import emotion1_nsel from "../../assets/images/emotion-1-nsel.svg";
+import emotion2_sel from "../../assets/images/emotion-2-sel.svg";
 import emotion2_nsel from "../../assets/images/emotion-2-nsel.svg";
-// import emotion3_sel from "../../assets/images/emotion-3-sel.svg";
+import emotion3_sel from "../../assets/images/emotion-3-sel.svg";
 import emotion3_nsel from "../../assets/images/emotion-3-nsel.svg";
 import { ReviewDetailItem } from "../../components/ReviewDetailItem";
 import { CheckPopup } from "../../components/CheckPopup";
+import { getMarketReview, Review } from "../../api/marketReviewApi";
 
 export const ReviewDetailPage = () => {
-  // const { id } = useParams<{ id: string }>();
-
-  const [reviewInfo, setReviewInfo] = useState([
-    {
-      user: "사용자1",
-      userImg: "",
-      level: 1,
-      state: "장애인",
-      emotion: "emotion1",
-      review: "편했어요",
-      picture: [],
-      comment: 0,
-      like: 0,
-    },
-    {
-      user: "사용자2",
-      userImg: "",
-      level: 2,
-      state: "노인",
-      emotion: "emotion2",
-      review: "편했어요",
-      picture: [],
-      comment: 0,
-      like: 0,
-    },
-  ]);
+  const { id } = useParams<{ id: string }>();
+  const [reviewInfo, setReviewInfo] = useState<Review[]>([]);
+  const [placeName, setPlaceName] = useState<string>("");
 
   const [showPopup, setShowPopup] = useState(false);
   const [deletedIndex, setDeletedIndex] = useState<number | null>(null);
   const [editIndex, setEditIndex] = useState<number>(-1);
   const [usage, setUsage] = useState<string>("");
+  const emotions = ["GOOD", "SOSO", "BAD"];
+
+  // 비율 계산 함수
+  const calculatePercentage = (score: string) => {
+    const count = reviewInfo.filter((review) => review.score === score).length;
+    return reviewInfo.length > 0
+      ? Math.round((count / reviewInfo.length) * 100)
+      : 0;
+  };
+
+  // 가장 높은 비율의 감정 찾기
+  const getHighestEmotion = () => {
+    const percentages = emotions.map((emotion) => ({
+      emotion,
+      percentage: calculatePercentage(emotion),
+    }));
+    percentages.sort((a, b) => b.percentage - a.percentage);
+    return percentages[0]?.emotion || null;
+  };
+
+  const highestEmotion = getHighestEmotion();
 
   useEffect(() => {
     if (showPopup) {
@@ -49,6 +48,24 @@ export const ReviewDetailPage = () => {
       document.body.style.overflow = "auto";
     }
   }, [showPopup]);
+
+  useEffect(() => {
+    const fetchReviews = async () => {
+      if (!id) return;
+
+      try {
+        const data = await getMarketReview(Number(id));
+        console.log("Fetched market reviews:", data);
+        setReviewInfo(data.data.reviews);
+        setPlaceName(data.data.placeName);
+      } catch (error) {
+        console.error("Failed to fetch market reviews:", error);
+        console.log("리뷰 정보를 불러오는데 실패했습니다.");
+      }
+    };
+
+    fetchReviews();
+  }, [id]);
 
   const handleDeleteReview = (index: number | null) => {
     setReviewInfo((prev) => prev.filter((_, i) => i !== index));
@@ -60,22 +77,52 @@ export const ReviewDetailPage = () => {
 
   return (
     <div className="mt-20 mx-8 box-border">
+      <div className="font-bold text-lg mb-4">{placeName}</div>
       {/* 후기 비율 */}
       <div className="flex flex-col border-b border-dong_deep_gray pb-6">
-        <div className="font-bold">후기 12명</div>
+        <div className="font-bold">후기 {reviewInfo.length}명</div>
         <div className="flex gap-2 flex-col mt-3">
-          <div className="flex">
-            <img src={emotion1_sel} alt="emotion1" className="w-8" />
-            <div className="h-8 w-full ml-3 bg-dong_light_gray rounded-lg"></div>
-          </div>
-          <div className="flex">
-            <img src={emotion2_nsel} alt="emotion1" className="w-8" />
-            <div className="h-8 w-full ml-3 bg-dong_light_gray rounded-lg"></div>
-          </div>
-          <div className="flex">
-            <img src={emotion3_nsel} alt="emotion1" className="w-8" />
-            <div className="h-8 w-full ml-3 bg-dong_light_gray rounded-lg"></div>
-          </div>
+          {[
+            {
+              label: "GOOD",
+              selImg: emotion1_sel,
+              nselImg: emotion1_nsel,
+              color: "bg-blue-500",
+            },
+            {
+              label: "SOSO",
+              selImg: emotion2_sel,
+              nselImg: emotion2_nsel,
+              color: "bg-blue-400",
+            },
+            {
+              label: "BAD",
+              selImg: emotion3_sel,
+              nselImg: emotion3_nsel,
+              color: "bg-blue-300",
+            },
+          ].map((item, index) => {
+            const percentage = calculatePercentage(item.label);
+            const isHighest = highestEmotion === item.label;
+            return (
+              <div key={index} className="flex items-center">
+                <img
+                  src={isHighest ? item.selImg : item.nselImg}
+                  alt={item.label}
+                  className="w-8"
+                />
+                <div className="h-8 w-full ml-3 bg-dong_light_gray rounded-lg relative">
+                  <div
+                    className={`absolute top-0 left-0 h-full ${item.color} rounded-lg`}
+                    style={{ width: `${percentage}%` }}
+                  ></div>
+                </div>
+                <span className="ml-2 text-sm font-bold text-dong_dark_gray">
+                  {percentage}%
+                </span>
+              </div>
+            );
+          })}
         </div>
       </div>
       {/* 개별 후기 */}
@@ -85,15 +132,15 @@ export const ReviewDetailPage = () => {
             <li key={index}>
               <ReviewDetailItem
                 key={index}
-                user={review.user}
-                userImg={review.userImg}
-                level={review.level}
-                state={review.state}
-                emotion={review.emotion}
-                review={review.review}
-                picture={review.picture}
-                comment={review.comment}
-                like={review.like}
+                user={review.userInfo.userName}
+                userImg={review.userInfo.profileImageUrl}
+                level={1} // 필요 시 API에서 해당 정보를 받아와 추가
+                state={review.userInfo.userType}
+                emotion={review.score}
+                review={review.content}
+                picture={review.imageUrl}
+                comment={review.commentNum}
+                like={review.likeNum}
                 onClick={(e) => {
                   console.log(e.currentTarget.textContent);
                   if (e.currentTarget.textContent === "수정") {

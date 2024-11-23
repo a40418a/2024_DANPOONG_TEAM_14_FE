@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+// import { useNavigate, useLocation } from "react-router-dom";
 
 declare global {
   interface Window {
@@ -23,7 +23,7 @@ export const KakaoMap = ({ categories }: { categories: string[] }) => {
     longitude: 126.570667,
   });
   const [markers, setMarkers] = useState<any[]>([]);
-  const [keyword, setKeyword] = useState<string>("");
+  const [keyword, _setKeyword] = useState("");
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -42,51 +42,47 @@ export const KakaoMap = ({ categories }: { categories: string[] }) => {
 
   useEffect(() => {
     const container = document.getElementById("map");
-    if (container) {
-      const options = {
-        center: new window.kakao.maps.LatLng(
-          location.latitude,
-          location.longitude,
-        ),
-        level: 3,
-      };
-      const mapInstance = new window.kakao.maps.Map(container, options);
-      setMap(mapInstance);
+    const options = {
+      center: new window.kakao.maps.LatLng(
+        location.latitude,
+        location.longitude,
+      ),
+      level: 3,
+    };
+    const mapInstance = new window.kakao.maps.Map(container, options);
+    setMap(mapInstance);
 
-      // 현재 위치 마커 추가
-      const currentLocationMarkerImage = new window.kakao.maps.MarkerImage(
-        "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png",
-        new window.kakao.maps.Size(24, 35),
-      );
+    const currentLocationMarkerImage = new window.kakao.maps.MarkerImage(
+      "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png",
+      new window.kakao.maps.Size(24, 35),
+    );
 
-      const currentLocationMarker = new window.kakao.maps.Marker({
-        position: new window.kakao.maps.LatLng(
-          location.latitude,
-          location.longitude,
-        ),
-        map: mapInstance,
-        image: currentLocationMarkerImage,
-      });
+    const currentLocationMarker = new window.kakao.maps.Marker({
+      position: new window.kakao.maps.LatLng(
+        location.latitude,
+        location.longitude,
+      ),
+      map: mapInstance,
+      image: currentLocationMarkerImage,
+    });
 
-      setMarkers([currentLocationMarker]);
-    }
+    setMarkers((prevMarkers) => [...prevMarkers, currentLocationMarker]);
   }, [location]);
 
   useEffect(() => {
     if (map) {
       const ps = new window.kakao.maps.services.Places();
 
-      // 기존 마커 삭제
       markers.forEach((marker) => marker.setMap(null));
       setMarkers([]);
 
-      // 카테고리 검색
       categories.forEach((category) => {
         ps.categorySearch(
           category,
-          (data: Place[], status: string) => {
+          (data: any, status: any, _pagination: any) => {
             if (status === window.kakao.maps.services.Status.OK) {
-              const newMarkers = data.map((place) => {
+              console.log(data);
+              const newMarkers = data.map((place: any) => {
                 const marker = new window.kakao.maps.Marker({
                   position: new window.kakao.maps.LatLng(place.y, place.x),
                   map: map,

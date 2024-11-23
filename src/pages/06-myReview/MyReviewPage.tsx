@@ -3,32 +3,36 @@ import { useState, useEffect } from "react";
 import { ReviewItem } from "../../components/ReviewItem";
 import { CheckPopup } from "../../components/CheckPopup";
 
+import emotion1_sel from "../../assets/images/emotion-1-sel.svg";
+import emotion2_sel from "../../assets/images/emotion-2-sel.svg";
+import emotion3_sel from "../../assets/images/emotion-3-sel.svg";
+
 export const MyReviewPage = () => {
   const [reviewInfo, setReviewInfo] = useState([
     {
       store: "소고기 전문 식당",
-      state: "편했어요",
+      state: emotion1_sel,
       review:
         "고기도 너무 맛있고 전반적으로 만족스럽습니다.불편함이 적었던 식당입니다!고기도 너무 맛있고 전반적으로 만족스럽습니다.불편함이 적었던 식당입니다!고기도 너무 맛있고 전반적으로 만족스럽습니다.불편함이 적었던 식당입니다!고기도 너무 맛있고 전반적으로 만족스럽습니다.불편함이 적었던 식당입니다!고기도 너무 맛있고 전반적으로 만족스럽습니다.불편함이 적었던 식당입니다!고기도 너무 맛있고 전반적으로 만족스럽습니다.불편함이 적었던 식당입니다!고기도 너무 맛있고 전반적으로 만족스럽습니다.불편함이 적었던 식당입니다!고기도 너무 맛있고 전반적으로 만족스럽습니다.불편함이 적었던 식당입니다!",
       isImage: true,
     },
     {
       store: "소고기 전문 식당",
-      state: "편했어요",
+      state: emotion2_sel,
       review:
         "고기도 너무 맛있고 전반적으로 만족스럽습니다.불편함이 적었던 식당입니다!",
       isImage: false,
     },
     {
       store: "소고기 전문 식당",
-      state: "편했어요",
+      state: emotion3_sel,
       review:
         "고기도 너무 맛있고 전반적으로 만족스럽습니다.불편함이 적었던 식당입니다!",
       isImage: true,
     },
     {
       store: "소고기 전문 식당",
-      state: "편했어요",
+      state: emotion1_sel,
       review:
         "고기도 너무 맛있고 전반적으로 만족스럽습니다.불편함이 적었던 식당입니다!",
       isImage: true,
@@ -36,11 +40,8 @@ export const MyReviewPage = () => {
   ]);
 
   const [showPopup, setShowPopup] = useState(false);
-
   const [deletedIndex, setDeletedIndex] = useState<number | null>(null);
-
   const [editIndex, setEditIndex] = useState<number>(-1);
-
   const [usage, setUsage] = useState<string>("");
 
   useEffect(() => {

@@ -12,8 +12,8 @@ export const TypeSelectItem = ({
   const changeEng = ({ children }: { children: React.ReactNode }): string => {
     if (children === "장애인") {
       return "Disabled person";
-    } else if (children === "임산부") {
-      return "Pregnant woman";
+    } else if (children === "안내견 보호자") {
+      return "A guide dog guardian";
     } else if (children === "노약자") {
       return "Elderly person";
     } else if (children === "어린이") {
@@ -36,12 +36,12 @@ export const TypeSelectItem = ({
           일상생활과 사회 참여에 어려움을 겪어요
         </>
       );
-    } else if (children === "임산부") {
+    } else if (children === "안내견 보호자") {
       return (
         <>
-          신체적 변화와 건강상의 위험으로
+          시각 장애인의 안내견을 돌보고 관리하며,
           <br />
-          인해 이동과 생활에 불편함을 겪어요.
+          건강하게 역할을 수행하도록 돕는 사람입니다
         </>
       );
     } else if (children === "노약자") {
@@ -66,21 +66,17 @@ export const TypeSelectItem = ({
   };
 
   return (
-    <div className={`w-[18.75rem] h-[5.625rem] rounded-lg  `} onClick={onClick}>
-      <div
-        className={`text-dong_white rounded-lg flex justify-center ${
-          selected ? "bg-dong_primary" : "bg-dong_deep_gray"
-        } flex flex-col h-full p-3`}
-        onClick={onClick}
-      >
-        <span className="text-sm font-bold mb-1">
-          {children}
-          <span className="text-[0.625rem] ml-1">
-            {changeEng({ children })}
-          </span>
-        </span>
-        <span className="text-xs font-medium">{makeDesc({ children })}</span>
-      </div>
+    <div
+      className={`w-[18.75rem] h-auto text-dong_white rounded-lg flex justify-center ${
+        selected ? "bg-dong_primary" : "bg-dong_deep_gray"
+      } flex flex-col h-full px-8 py-5`}
+      onClick={onClick}
+    >
+      <span className="text-sm font-bold mb-1">
+        {children}
+        <span className="text-[0.625rem] ml-1">{changeEng({ children })}</span>
+      </span>
+      <span className="text-xs font-medium">{makeDesc({ children })}</span>
     </div>
   );
 };

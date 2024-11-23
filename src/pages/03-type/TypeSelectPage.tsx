@@ -30,6 +30,16 @@ export const TypeSelectPage = () => {
         <li>
           <TypeSelectItem
             onClick={() => {
+              setSelectedItem("안내견 보호자");
+            }}
+            selected={isSelected("안내견 보호자")}
+          >
+            안내견 보호자
+          </TypeSelectItem>
+        </li>
+        <li>
+          <TypeSelectItem
+            onClick={() => {
               setSelectedItem("노약자");
             }}
             selected={isSelected("노약자")}

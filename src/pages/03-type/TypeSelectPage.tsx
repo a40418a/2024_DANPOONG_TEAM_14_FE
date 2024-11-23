@@ -12,14 +12,16 @@ export const TypeSelectPage = () => {
   const isSelected = (item: string): boolean => item === selectedItem;
 
   const handleNextClick = async () => {
-    if (!selectedItem) return;
+    if (!selectedItem) {
+      console.log("No item selected");
+      return;
+    }
 
-    // 선택한 유형을 백엔드로 전송
     try {
-      console.log("Selected user type:", selectedItem);
-      await saveUserType(selectedItem);
+      console.log("Sending user type:", selectedItem);
+      const response = await saveUserType(selectedItem);
+      console.log("API Response:", response);
 
-      // 성공 시 페이지 이동
       if (location.pathname === "/types") {
         navigate("/done");
       } else {

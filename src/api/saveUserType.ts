@@ -23,6 +23,7 @@ export const saveUserType = async (
       throw new Error(`Failed to save user type: ${response.status}`);
     }
     const result: SaveUserTypeResponse = await response.json();
+    console.log("API Response:", result); // 응답 확인
     return result;
   } catch (error) {
     console.error("Error saving user type:", error);

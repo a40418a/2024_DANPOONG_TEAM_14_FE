@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { TypeSelectItem } from "../../components/TypeSelectItem";
 import { ActionButtons } from "../../components/ActionButtons";
-import { saveUserType } from "../../api/saveUserType";
+import { saveUserType } from "../../api/saveUserTypeApi";
 
 export const TypeSelectPage = () => {
   const navigate = useNavigate();

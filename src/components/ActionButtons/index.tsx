@@ -15,7 +15,8 @@ export const ActionButtons = ({
     children === "다음" ||
     children === "완료" ||
     children === "선택 삭제하기" ||
-    children === "리뷰 수정하기"
+    children === "리뷰 수정하기" ||
+    children === "리뷰 작성하기"
   ) {
     return (
       <button

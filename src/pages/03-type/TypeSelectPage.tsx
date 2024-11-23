@@ -16,7 +16,7 @@ export const TypeSelectPage = () => {
         <span>사용자님의 유형을 선택해주세요.</span>
         <span>맞춤 여행 장소를 추천해 드릴게요!</span>
       </div>
-      <ul className="flex flex-col items-center gap-3 mt-3">
+      <ul className="flex flex-col items-center gap-3 mt-5">
         <li>
           <TypeSelectItem
             onClick={() => {
@@ -25,16 +25,6 @@ export const TypeSelectPage = () => {
             selected={isSelected("장애인")}
           >
             장애인
-          </TypeSelectItem>
-        </li>
-        <li>
-          <TypeSelectItem
-            onClick={() => {
-              setSelectedItem("임산부");
-            }}
-            selected={isSelected("임산부")}
-          >
-            임산부
           </TypeSelectItem>
         </li>
         <li>

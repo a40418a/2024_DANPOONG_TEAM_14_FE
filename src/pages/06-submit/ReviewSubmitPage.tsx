@@ -3,6 +3,12 @@ import { useState, useEffect } from "react";
 import classNames from "classnames";
 import GalleryIcon from "../../assets/images/gallery.svg";
 import Xicon from "../../assets/images/x.svg";
+import emotion1_sel from "../../assets/images/emotion-1-sel.svg";
+import emotion1_nsel from "../../assets/images/emotion-1-nsel.svg";
+import emotion2_sel from "../../assets/images/emotion-2-sel.svg";
+import emotion2_nsel from "../../assets/images/emotion-2-nsel.svg";
+import emotion3_sel from "../../assets/images/emotion-3-sel.svg";
+import emotion3_nsel from "../../assets/images/emotion-3-nsel.svg";
 
 export const ReviewSubmitPage = () => {
   const [selected, setSelected] = useState<string | null>(null);
@@ -10,9 +16,9 @@ export const ReviewSubmitPage = () => {
   const [keyboardHeight, setKeyboardHeight] = useState<number>(0);
 
   const options = [
-    { id: "comfortable", label: "편했어요" },
-    { id: "a_bit_uncomfortable", label: "조금 불편했어요" },
-    { id: "uncomfortable", label: "불편했어요" },
+    { id: "1", sel: emotion1_sel, nsel: emotion1_nsel },
+    { id: "2", sel: emotion2_sel, nsel: emotion2_nsel },
+    { id: "3", sel: emotion3_sel, nsel: emotion3_nsel },
   ];
 
   const openGallery = () => {
@@ -60,11 +66,11 @@ export const ReviewSubmitPage = () => {
   return (
     <div className="flex flex-col mt-24 px-5 box-border">
       {/* 입력 부분 */}
-      <div>
+      <div className="box-border">
         <input
           type="text"
           className="mt-5 w-full placeholder-dong_black text-lg font-bold"
-          placeholder="가게명을 입력해주세요."
+          placeholder="제목을 입력해주세요."
         />
         <textarea
           className="mt-5 w-full h-48 placeholder-dong_light_black resize-none"
@@ -96,20 +102,24 @@ export const ReviewSubmitPage = () => {
         style={{ bottom: `${keyboardHeight}px` }}
       >
         {/* 버튼 */}
-        <div className="flex gap-3 my-4">
+        <div className="flex gap-4 my-4">
           {options.map((option) => (
             <div
               key={option.id}
               className={classNames(
-                "box-border w-28 p-2 text-center rounded-lg text-dong_white",
+                "box-border text-center w-24 h-14 rounded-xl flex justify-center items-center",
                 {
-                  "bg-dong_primary": selected === option.id,
-                  "bg-dong_deep_gray": selected !== option.id,
+                  "bg-dong_secondary": selected === option.id,
+                  "bg-dong_light_gray": selected !== option.id,
                 },
               )}
               onClick={() => setSelected(option.id)}
             >
-              {option.label}
+              <img
+                src={selected === option.id ? option.sel : option.nsel}
+                alt={`emotion-${option.id}`}
+                className="w-full h-4/5"
+              />
             </div>
           ))}
         </div>

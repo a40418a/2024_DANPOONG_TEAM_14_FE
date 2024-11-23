@@ -34,7 +34,16 @@ export const ExploreType = () => {
               노약자
             </ActionButtons>
           </li>
-
+          <li>
+            <ActionButtons
+              onClick={() => {
+                navigate("/circle-me/explore/surroundings/theme");
+              }}
+              disabled={false}
+            >
+              안내견 보호자
+            </ActionButtons>
+          </li>
           <li>
             <ActionButtons
               onClick={() => {

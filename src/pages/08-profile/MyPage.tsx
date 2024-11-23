@@ -1,9 +1,13 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { ActionButtons } from "../../components/ActionButtons";
 import { MyCollection } from "../../components/MyCollection";
 
 export const MyPage = () => {
   const navigate = useNavigate();
+  // _setReview로 지정해서 빌드 오류 우선 무시하도록 해둠
+  const [review, _setReview] = useState<number>(0);
+  const [bookmark, _setBookmark] = useState<number>(0);
 
   return (
     <div>
@@ -25,11 +29,11 @@ export const MyPage = () => {
           <ul className="flex gap-8 justify-center">
             <li className="flex flex-col justify-center items-center text-xs leading-4 font-medium">
               <span>작성리뷰</span>
-              <span>3</span>
+              <span>{review}</span>
             </li>
             <li className="flex flex-col justify-center items-center text-xs leading-4 font-medium">
-              <span>즐겨찾기</span>
-              <span>13</span>
+              <span>북마크</span>
+              <span>{bookmark}</span>
             </li>
           </ul>
         </div>

@@ -79,7 +79,7 @@ export const MyPage = () => {
         <div className="mt-4 mb-8 text-center">
           <ActionButtons
             onClick={() => {
-              navigate("/");
+              navigate("https://api.circleme.site/api/token/logout");
             }}
             disabled={false}
           >

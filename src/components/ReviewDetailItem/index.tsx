@@ -59,7 +59,10 @@ export const ReviewDetailItem = ({
               `https://api.circleme.site/api/file/get?fileUrl=${encodeURIComponent(
                 validUrl,
               )}`,
-              { responseType: "blob" }, // 이미지 데이터를 Blob으로 받음
+              {
+                withCredentials: true, // 쿠키 기반 인증 활성화
+                responseType: "blob", // Blob 데이터로 이미지 가져오기
+              },
             );
 
             // Blob 데이터를 Object URL로 변환

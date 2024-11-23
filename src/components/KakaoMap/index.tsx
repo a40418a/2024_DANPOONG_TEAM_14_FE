@@ -8,12 +8,19 @@ declare global {
 }
 
 interface Place {
-  id: string;
   place_name: string;
   address_name: string;
+  category_group_name: string;
   phone: string;
   x: string; // 경도
   y: string; // 위도
+}
+
+interface PlaceData {
+  latitude: string;
+  longitude: string;
+  plcaeName: string;
+  category: string;
 }
 
 export const KakaoMap = ({ categories }: { categories: string[] }) => {
@@ -27,6 +34,29 @@ export const KakaoMap = ({ categories }: { categories: string[] }) => {
   const locationState = useLocation().state as { keyword?: string };
   const keyword = locationState?.keyword || "";
   const navigate = useNavigate();
+
+  const postPlaceInfo = async (data: PlaceData) => {
+    try {
+      const response = await fetch(
+        "https://api.circleme.site/api/place/search",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzODA0NzY5MjUyIiwiaWF0IjoxNzMyMzcyNzM4LCJleHAiOjE3MzI0NTkxMzh9.oL0THgxo6JKL-sNDsyhdzpGUroVNfWCvjlNVvAnuX0g",
+          },
+          body: JSON.stringify(data),
+        },
+      );
+
+      const result = await response.json();
+
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   // 현재 위치 가져오기
   useEffect(() => {
@@ -93,7 +123,6 @@ export const KakaoMap = ({ categories }: { categories: string[] }) => {
           category,
           (data: any, status: any) => {
             if (status === window.kakao.maps.services.Status.OK) {
-              console.log(data);
               const newMarkers = data.map((place: any) => {
                 const marker = new window.kakao.maps.Marker({
                   position: new window.kakao.maps.LatLng(place.y, place.x),
@@ -147,6 +176,16 @@ export const KakaoMap = ({ categories }: { categories: string[] }) => {
                 // 마커 클릭 이벤트
                 window.kakao.maps.event.addListener(marker, "click", () => {
                   infowindow.open(map, marker);
+
+                  const placeInfo = {
+                    latitude: place.y,
+                    longitude: place.x,
+                    plcaeName: place.place_name,
+                    category: place.category_group_name,
+                  };
+
+                  console.log(placeInfo);
+                  postPlaceInfo(placeInfo);
                   // 장소 데이터를 MarketPage로 전달
                   navigate("/circle-me/market", { state: { place } });
                 });

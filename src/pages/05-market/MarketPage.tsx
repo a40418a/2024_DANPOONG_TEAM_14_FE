@@ -5,6 +5,10 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { ActionButtons } from "../../components/ActionButtons";
 import { MarketInfo } from "../../components/MarketInfo";
 
+import emotion1_sel from "../../assets/images/emotion-1-sel.svg";
+import emotion2_sel from "../../assets/images/emotion-2-sel.svg";
+import emotion3_sel from "../../assets/images/emotion-3-sel.svg";
+
 export const MarketPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -20,10 +24,10 @@ export const MarketPage = () => {
   return (
     <div className="mt-24 mx-9 flex flex-col box-border">
       {/* 상단 선택 부분 */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-end">
         {/* 이모지 */}
         <div>
-          <img className="w-6 h-6" src="추후추가예정" alt="emotion" />
+          <img className="w-6 h-6 mr-2" src={emotion1_sel} alt="emotion" />
         </div>
         {/* 북마크 */}
         <div

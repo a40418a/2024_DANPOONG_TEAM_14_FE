@@ -42,7 +42,8 @@ export const Header = () => {
     location.pathname === "/accept" ||
     location.pathname.includes("/types") ||
     location.pathname.includes("/category") ||
-    location.pathname === "/circle-me/bookmark"
+    location.pathname === "/circle-me/bookmark" ||
+    location.pathname.includes("/market")
   ) {
     return (
       <div className="w-screen h-20 m-auto bg-dong_white">
@@ -76,7 +77,8 @@ export const Header = () => {
               </span>
             </div>
           )}
-          {location.pathname === "/types" && (
+          {(location.pathname === "/types" ||
+            location.pathname.includes("market")) && (
             <div className="flex absolute right-7 top-7">
               <div className="flex items-center">
                 <span className="text-sm font-bold text-dong_light_black">

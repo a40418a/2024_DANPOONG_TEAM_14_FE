@@ -1,4 +1,4 @@
-const BASE_URL = import.meta.env.VITE_BASE_API_URL;
+const BASE_URL = "https://api.circleme.site";
 
 // 사용자 유형 저장 API 함수
 export const postUserType = async (userType: string): Promise<any> => {

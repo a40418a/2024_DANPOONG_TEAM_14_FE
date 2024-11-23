@@ -221,9 +221,14 @@ export const Header = () => {
                 type="text"
                 className="border-dong_light_gray border-solid border-[0.0625rem] w-full h-full pl-10 placeholder-dong_black placeholder-bold rounded-lg text-sm"
                 placeholder="동네를 입력하세요"
+                value={xClick}
+                onChange={(e) => setXClick(e.target.value)}
               />
             </div>
-            <div className="absolute top-1/2 right-4 transform -translate-y-1/2">
+            <div
+              className="absolute top-1/2 right-4 transform -translate-y-1/2"
+              onClick={() => setXClick("")}
+            >
               <img src={Xicon} />
             </div>
           </div>

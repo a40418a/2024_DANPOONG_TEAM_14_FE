@@ -18,7 +18,7 @@ export const MarketPage = () => {
   }
 
   return (
-    <div className="mt-24 mx-9 flex flex-col">
+    <div className="mt-24 mx-9 flex flex-col box-border">
       {/* 상단 선택 부분 */}
       <div className="flex items-center justify-between">
         {/* 이모지 */}

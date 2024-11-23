@@ -38,7 +38,7 @@ export const ReviewItem = ({
             </div>
           </div>
         </div>
-        <div className="w-[12.5rem] h-auto mb-6">
+        <div className="w-[12.5rem] h-auto mb-[0.625rem]">
           <span className="text-[0.625rem] font-medium inline-block leading-4">
             {review}
           </span>

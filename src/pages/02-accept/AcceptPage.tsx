@@ -17,8 +17,8 @@ export const AcceptPage = () => {
   }, [useChecked, locationChecked, personalChecked]);
 
   return (
-    <div className="">
-      <div className="mt-24 ml-11">
+    <div className="mt-24">
+      <div className="ml-11">
         <span className="text-lg font-bold">약관동의</span>
       </div>
       <div className="font-bold mt-11 mb-7">
@@ -76,7 +76,7 @@ export const AcceptPage = () => {
           </span>
         </li>
       </ul>
-      <div className="text-center fixed bottom-5 w-full">
+      <div className="fixed bottom-5 left-0 w-full flex justify-center">
         <ActionButtons
           onClick={() => navigate("/types")}
           disabled={!allChecked}

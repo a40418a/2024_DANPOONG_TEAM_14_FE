@@ -119,7 +119,7 @@ export const Header = () => {
               value={xClick}
               onChange={(e) => setXClick(e.target.value)} // 상태 업데이트
               onKeyDown={(e) => {
-                if (e.key === "Enter") handleSearch();
+                if (e.key === "Enter" || e.key === "Tab") handleSearch();
               }} // 엔터 키 이벤트
             />
           </div>

@@ -51,9 +51,8 @@ export const ProfileEditPage = () => {
       </div>
       <div className="mb-5">
         <div className="mb-4">
-          <span className="text-base leading-5 font-bold">이름</span>
+          <span className="text-base mt-2 font-bold">{username}</span>
         </div>
-        <div>{username}</div>
       </div>
       <div className="flex flex-col items-center">
         <div className="flex items-center gap-48 my-5">

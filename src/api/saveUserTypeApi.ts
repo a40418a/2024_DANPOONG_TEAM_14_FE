@@ -1,7 +1,5 @@
 import axios from "axios";
 
-const BASE_URL = "https://api.circleme.site"; // 고정된 URL 사용
-
 // 사용자 유형 저장 API 함수
 export const postUserType = async (userType: string): Promise<any> => {
   try {

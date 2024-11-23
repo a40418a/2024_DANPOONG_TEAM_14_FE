@@ -12,6 +12,14 @@ export const MyPage = () => {
   const [review, setReview] = useState<number>(0);
   const [bookmark, setBookmark] = useState<number>(0);
 
+  // userType 매핑 객체
+  const userTypeMapping: { [key: string]: string } = {
+    DISABLED: "장애인",
+    ASSISTANCE_DOG: "안내견 보호자",
+    ELDERLY: "노약자",
+    CHILD: "어린이",
+  };
+
   // 사용자 정보를 가져오는 useEffect
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -21,7 +29,7 @@ export const MyPage = () => {
 
         // 상태 업데이트
         setUsername(userInfo.data.username);
-        setUserType(userInfo.data.userType);
+        setUserType(userTypeMapping[userInfo.data.userType] || "유형 없음");
         setProfileImageUrl(userInfo.data.profileImageUrl);
         setReview(userInfo.data.reviewNum);
         setBookmark(userInfo.data.bookmarkNum);

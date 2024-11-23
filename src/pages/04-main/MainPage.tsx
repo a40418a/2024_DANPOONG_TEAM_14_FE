@@ -14,15 +14,15 @@ export const MainPage = () => {
     );
   };
   return (
-    <div className="pt-[6.938rem]">
+    <div className="mt-28">
       <div className="flex items-center justify-center">
         <ul className="flex gap-1">
           <li>
-            <div className="w-[4.5rem] h-[1.688rem] rounded-lg bg-dong_primary flex justify-center">
+            <div className="w-20 h-7 rounded-lg bg-dong_primary flex justify-center">
               <select
                 name="category"
                 id="category"
-                className="bg-dong_primary w-full h-full rounded-lg text-[0.625rem] text-dong_white text-center"
+                className="bg-dong_primary w-full h-full rounded-lg text-xs text-dong_white text-center"
               >
                 <option value="distance">거리순</option>
                 <option value="correct">정확도순</option>

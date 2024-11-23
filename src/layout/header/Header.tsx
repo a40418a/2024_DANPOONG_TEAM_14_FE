@@ -172,7 +172,7 @@ export const Header = () => {
               저장
             </span>
           </div>
-        ) : location.pathname.includes("/review") && !id ? (
+        ) : location.pathname.includes("/profile") ? (
           <div
             className="flex flex-col justify-center fixed right-7 top-7"
             onClick={() => {

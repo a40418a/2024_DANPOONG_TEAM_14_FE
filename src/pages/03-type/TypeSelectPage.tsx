@@ -18,7 +18,6 @@ export const TypeSelectPage = () => {
     }
 
     try {
-      console.log("Sending user type:", selectedItem);
       const response = await postUserType(selectedItem);
       console.log("API Response:", response);
 

@@ -46,23 +46,34 @@ export const ReviewDetailItem = ({
     CHILD: "어린이",
   };
 
-  // 이미지 가져오기
   useEffect(() => {
     const fetchImages = async () => {
       try {
         const imageUrls = await Promise.all(
           picture.map(async (url) => {
-            const response = await axios.get<string>(
-              `https://api.circleme.site/api/file/get?fileUrl=${encodeURIComponent(url)}`,
+            // URL 유효성 검사 및 변환
+            const validUrl = url.startsWith("http")
+              ? url
+              : `https://api.circleme.site${url}`;
+            const response = await axios.get(
+              `https://api.circleme.site/api/file/get?fileUrl=${encodeURIComponent(
+                validUrl,
+              )}`,
+              { responseType: "blob" }, // 이미지 데이터를 Blob으로 받음
             );
-            console.log("Fetched review image:", response.data);
-            return response.data;
+
+            // Blob 데이터를 Object URL로 변환
+            const imageBlob = new Blob([response.data]);
+            const imageUrl = URL.createObjectURL(imageBlob);
+            return imageUrl;
           }),
         );
         setResolvedImages(imageUrls);
       } catch (error) {
         console.error("Failed to fetch review images:", error);
-        setResolvedImages([]); // 에러 발생 시 빈 배열로 설정
+
+        // 기본 이미지를 설정하거나 빈 상태를 처리
+        setResolvedImages([]);
       }
     };
 

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://api.circleme.site";
+const BASE_URL = import.meta.env.VITE_BASE_API_URL;
 
 // API 응답 타입 정의
 export interface UserInfoResponse {

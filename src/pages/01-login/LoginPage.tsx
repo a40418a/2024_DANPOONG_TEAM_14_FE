@@ -21,7 +21,8 @@ export const LoginPage = () => {
       <div
         className=" h-14 relative flex justify-center items-center rounded-lg  "
         onClick={() => {
-          navigate("/accept");
+          window.location.href =
+            "https://api.circleme.site/oauth2/authorization/kakao";
         }}
       >
         <img src={kakao} />

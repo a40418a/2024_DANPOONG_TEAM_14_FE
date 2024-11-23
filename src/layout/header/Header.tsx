@@ -6,7 +6,6 @@ import { FaUser } from "react-icons/fa6";
 import { CiSettings } from "react-icons/ci";
 import Xicon from "../../assets/images/x.svg";
 
-import { CategoryItem } from "../../components/CategoryItem";
 import { CheckPopup } from "../../components/CheckPopup";
 import { useStoreType } from "../../hooks/useStoreType";
 import { useGetHeaderTitle } from "../../hooks/useGetHeaderTitle";
@@ -114,31 +113,6 @@ export const Header = () => {
           >
             <img src={Xicon} />
           </div>
-        </div>
-        <div className="flex items-center">
-          <ul className="flex gap-1">
-            <li>
-              <div className="w-[4.5rem] h-[1.688rem] rounded-lg bg-dong_primary flex justify-center">
-                <select
-                  name="category"
-                  id="category"
-                  className="bg-dong_primary w-full h-full rounded-lg text-[0.625rem] text-dong_white text-center"
-                >
-                  <option value="distance">거리순</option>
-                  <option value="correct">정확도순</option>
-                </select>
-              </div>
-            </li>
-            <li>
-              <CategoryItem>카페</CategoryItem>
-            </li>
-            <li>
-              <CategoryItem>음식점</CategoryItem>
-            </li>
-            <li>
-              <CategoryItem>편의시설</CategoryItem>
-            </li>
-          </ul>
         </div>
       </div>
     );

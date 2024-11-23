@@ -5,7 +5,7 @@ export const postUserType = async (userType: string): Promise<any> => {
   try {
     console.log("Sending user type:", userType);
 
-    const response = await fetch(`${BASE_URL}/api/user/save`, {
+    const response = await fetch(`https://api.circleme.site/api/user/save`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

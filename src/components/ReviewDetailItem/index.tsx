@@ -116,7 +116,7 @@ export const ReviewDetailItem = ({
             <span className="text-xs text-dong_light_black">사진 없음</span>
           )}
         </div>
-        <div className="absolute bottom-1 right-1 flex items-center gap-2">
+        <div className="absolute bottom-2 right-2 flex items-center gap-2">
           <div className="flex flex-col items-center">
             <img src={thumbIcon} alt="thumb" className="w-5 h-5" />
             <span className="text-xs text-dong_light_black">{like}</span>

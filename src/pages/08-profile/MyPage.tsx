@@ -1,13 +1,16 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ActionButtons } from "../../components/ActionButtons";
 import { MyCollection } from "../../components/MyCollection";
+import { getUserInfo } from "../../api/userInfoApi";
 
 export const MyPage = () => {
   const navigate = useNavigate();
-  // _setReview로 지정해서 빌드 오류 우선 무시하도록 해둠
-  const [review, _setReview] = useState<number>(0);
-  const [bookmark, _setBookmark] = useState<number>(0);
+  const [username, setUsername] = useState<string>("사용자 이름");
+  const [userType, setUserType] = useState<string>("유형 없음");
+  const [profileImageUrl, setProfileImageUrl] = useState<string>("");
+  const [review, setReview] = useState<number>(0);
+  const [bookmark, setBookmark] = useState<number>(0);
 
   return (
     <div>

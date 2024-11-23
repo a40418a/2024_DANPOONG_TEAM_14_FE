@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { TypeSelectItem } from "../../components/TypeSelectItem";
 import { ActionButtons } from "../../components/ActionButtons";
-import { saveUserType } from "../../api/saveUserTypeApi";
+import { postUserType } from "../../api/saveUserTypeApi";
 
 export const TypeSelectPage = () => {
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ export const TypeSelectPage = () => {
 
     try {
       console.log("Sending user type:", selectedItem);
-      const response = await saveUserType(selectedItem);
+      const response = await postUserType(selectedItem);
       console.log("API Response:", response);
 
       if (location.pathname === "/types") {

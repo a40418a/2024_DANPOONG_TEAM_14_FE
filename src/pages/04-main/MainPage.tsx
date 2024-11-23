@@ -14,7 +14,7 @@ export const MainPage = () => {
     );
   };
   return (
-    <div className="pt-[6.938rem]">
+    <div className="mt-24">
       <div className="flex items-center justify-center">
         <ul className="flex gap-1">
           <li>

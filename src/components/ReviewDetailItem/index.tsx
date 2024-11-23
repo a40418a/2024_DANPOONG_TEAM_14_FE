@@ -86,7 +86,7 @@ export const ReviewDetailItem = ({
               className="w-5 h-5"
             />
           </div>
-          <div className="text-xs ml-3 w-72">
+          <div className="text-xs ml-3 w-64">
             {review.length > 56 ? `${review.slice(0, 56)}...` : review}
           </div>
         </div>

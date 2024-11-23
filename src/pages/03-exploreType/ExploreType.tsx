@@ -1,6 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { saveUserType } from "../../api/saveUserType";
-import { useState } from "react";
 
 import { ActionButtons } from "../../components/ActionButtons";
 
@@ -11,19 +9,6 @@ import childIcon from "../../assets/images/어린이.svg";
 
 export const ExploreType = () => {
   const navigate = useNavigate();
-  const [_loading, setLoading] = useState(false);
-
-  const handleUserTypeClick = async (userType: string) => {
-    setLoading(true);
-    try {
-      await saveUserType(userType);
-      navigate("/circle-me/explore/surroundings/theme");
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   return (
     <div className="mt-24 flex flex-col items-center">
@@ -36,7 +21,9 @@ export const ExploreType = () => {
         <ul className="grid grid-cols-2 gap-4">
           <li>
             <ActionButtons
-              onClick={() => handleUserTypeClick("DISABLED")}
+              onClick={() => {
+                navigate("/circle-me/explore/surroundings/theme");
+              }}
               disabled={false}
             >
               <img src={jangIcon} alt="장애인" className="mb-4" />
@@ -45,7 +32,9 @@ export const ExploreType = () => {
           </li>
           <li>
             <ActionButtons
-              onClick={() => handleUserTypeClick("ELDERLY")}
+              onClick={() => {
+                navigate("/circle-me/explore/surroundings/theme");
+              }}
               disabled={false}
             >
               <img src={noIcon} alt="노약자" className="mb-4" />
@@ -54,7 +43,9 @@ export const ExploreType = () => {
           </li>
           <li>
             <ActionButtons
-              onClick={() => handleUserTypeClick("ASSISTANCE_DOG")}
+              onClick={() => {
+                navigate("/circle-me/explore/surroundings/theme");
+              }}
               disabled={false}
             >
               <img src={dogIcon} alt="안내견 보호자" className="mb-4" />
@@ -63,7 +54,9 @@ export const ExploreType = () => {
           </li>
           <li>
             <ActionButtons
-              onClick={() => handleUserTypeClick("CHILD")}
+              onClick={() => {
+                navigate("/circle-me/explore/surroundings/theme");
+              }}
               disabled={false}
             >
               <img src={childIcon} alt="어린이" className="mb-4" />

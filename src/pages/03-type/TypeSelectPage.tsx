@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { TypeSelectItem } from "../../components/TypeSelectItem";
 import { ActionButtons } from "../../components/ActionButtons";
+import { saveUserType } from "../../api/saveUserType";
 
 export const TypeSelectPage = () => {
   const navigate = useNavigate();
@@ -9,6 +10,26 @@ export const TypeSelectPage = () => {
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
 
   const isSelected = (item: string): boolean => item === selectedItem;
+
+  const handleNextClick = async () => {
+    if (!selectedItem) return;
+
+    // 선택한 유형을 백엔드로 전송
+    try {
+      console.log("Selected user type:", selectedItem);
+      await saveUserType(selectedItem);
+
+      // 성공 시 페이지 이동
+      if (location.pathname === "/types") {
+        navigate("/done");
+      } else {
+        navigate("/circle-me/profile/edit");
+      }
+    } catch (error) {
+      console.error("Failed to save user type:", error);
+      console.log("유형 저장에 실패했습니다. 다시 시도해주세요.");
+    }
+  };
 
   return (
     <div className="flex flex-col items-center mt-24">
@@ -20,9 +41,9 @@ export const TypeSelectPage = () => {
         <li>
           <TypeSelectItem
             onClick={() => {
-              setSelectedItem("장애인");
+              setSelectedItem("DISABLED");
             }}
-            selected={isSelected("장애인")}
+            selected={isSelected("DISABLED")}
           >
             장애인
           </TypeSelectItem>
@@ -30,9 +51,9 @@ export const TypeSelectPage = () => {
         <li>
           <TypeSelectItem
             onClick={() => {
-              setSelectedItem("안내견 보호자");
+              setSelectedItem("ASSISTANCE_DOG");
             }}
-            selected={isSelected("안내견 보호자")}
+            selected={isSelected("ASSISTANCE_DOG")}
           >
             안내견 보호자
           </TypeSelectItem>
@@ -40,9 +61,9 @@ export const TypeSelectPage = () => {
         <li>
           <TypeSelectItem
             onClick={() => {
-              setSelectedItem("노약자");
+              setSelectedItem("ELDERLY");
             }}
-            selected={isSelected("노약자")}
+            selected={isSelected("ELDERLY")}
           >
             노약자
           </TypeSelectItem>
@@ -50,9 +71,9 @@ export const TypeSelectPage = () => {
         <li>
           <TypeSelectItem
             onClick={() => {
-              setSelectedItem("어린이");
+              setSelectedItem("CHILD");
             }}
-            selected={isSelected("어린이")}
+            selected={isSelected("CHILD")}
           >
             어린이
           </TypeSelectItem>
@@ -60,13 +81,7 @@ export const TypeSelectPage = () => {
       </ul>
       <div className="text-center fixed bottom-5">
         <ActionButtons
-          onClick={() => {
-            if (location.pathname === "/types") {
-              navigate("/done");
-            } else {
-              navigate("/circle-me/profile/edit");
-            }
-          }}
+          onClick={handleNextClick}
           disabled={selectedItem === null}
         >
           완료

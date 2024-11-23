@@ -3,13 +3,20 @@ import { useState, useEffect } from "react";
 
 import { ActionButtons } from "../../components/ActionButtons";
 import { TypeSelectItem } from "../../components/TypeSelectItem";
-import { getUserInfo, updateUserInfo } from "../../api/userInfoApi";
+import { getUserInfo } from "../../api/userInfoApi";
 
 export const ProfileEditPage = () => {
   const navigate = useNavigate();
-  const [selectedUserType, setSelectedUserType] = useState<string>(""); // 초기값 비어 있음
+  const [userType, setUserType] = useState<string>(""); // 초기값 비어 있음
   const [username, setUsername] = useState<string>("사용자 이름");
   const [profileImageUrl, setProfileImageUrl] = useState<string>("");
+
+  const userTypeMapping: { [key: string]: string } = {
+    DISABLED: "장애인",
+    ASSISTANCE_DOG: "안내견 보호자",
+    ELDERLY: "노약자",
+    CHILD: "어린이",
+  };
 
   // 초기 사용자 정보를 가져옴
   useEffect(() => {
@@ -17,7 +24,7 @@ export const ProfileEditPage = () => {
       try {
         const userInfo = await getUserInfo();
         console.log("Fetched user info:", userInfo);
-        setSelectedUserType(userInfo.data.userType); // API에서 userType 가져와 설정
+        setUserType(userInfo.data.userType); // API에서 userType 가져와 설정
         setUsername(userInfo.data.username);
         setProfileImageUrl(userInfo.data.profileImageUrl);
       } catch (error) {
@@ -28,18 +35,6 @@ export const ProfileEditPage = () => {
 
     fetchUserType();
   }, []);
-  const handleUpdateUserType = async () => {
-    try {
-      const response = await updateUserInfo(selectedUserType);
-      console.log("User type updated successfully:", response);
-
-      alert("이동약자 유형이 성공적으로 변경되었습니다.");
-      navigate("/circle-me/profile");
-    } catch (error) {
-      console.error("Failed to update user type:", error);
-      alert("이동약자 유형 변경에 실패했습니다. 다시 시도해주세요.");
-    }
-  };
 
   return (
     <div className="flex flex-col items-center mt-24">
@@ -76,22 +71,19 @@ export const ProfileEditPage = () => {
           </div>
         </div>
         <div>
-          <TypeSelectItem
-            selected={true}
-            onClick={() => {
-              console.log(selectedUserType);
-            }}
-          >
-            {selectedUserType === "DISABLED" || "장애인"}
-            {selectedUserType === "ASSISTANCE_DOG" || "안내견 보호자"}
-            {selectedUserType === "ELDERLY" || "노약자"}
-            {selectedUserType === "CHILD" || "어린이"}
+          <TypeSelectItem selected={true} onClick={() => {}}>
+            {userTypeMapping[userType]}
           </TypeSelectItem>
         </div>
       </div>
       <div className="fixed bottom-5">
         <div className="mb-4">
-          <ActionButtons onClick={handleUpdateUserType} disabled={false}>
+          <ActionButtons
+            onClick={() => {
+              navigate("/circle-me/profile");
+            }}
+            disabled={false}
+          >
             저장
           </ActionButtons>
         </div>

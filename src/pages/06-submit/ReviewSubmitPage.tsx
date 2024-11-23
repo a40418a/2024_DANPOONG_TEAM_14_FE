@@ -102,7 +102,7 @@ export const ReviewSubmitPage = () => {
         style={{ bottom: `${keyboardHeight}px` }}
       >
         {/* 버튼 */}
-        <div className="flex gap-4 my-4">
+        <div className="flex gap-5 my-4">
           {options.map((option) => (
             <div
               key={option.id}

@@ -17,8 +17,8 @@ export const AcceptPage = () => {
   }, [useChecked, locationChecked, personalChecked]);
 
   return (
-    <div>
-      <div className="pt-32 ml-11">
+    <div className="">
+      <div className="mt-32 ml-11">
         <span className="text-lg font-bold">약관동의</span>
       </div>
       <div className="font-bold mt-11 mb-7">
@@ -34,9 +34,9 @@ export const AcceptPage = () => {
           전체 동의
         </CheckboxInput>
       </div>
-      <hr className="w-[21.5rem] h-[0.031rem] bg-dong_deep_gray font-bold ml-[1.375rem]" />
+      <hr className="w-auto h-[0.0625rem] bg-dong_deep_gray font-bold mx-5" />
       <ul className="list-none flex flex-col gap-7 mt-7">
-        <li className="relative">
+        <li className="relative flex items-center">
           <CheckboxInput
             onChange={(e) => {
               setUseChecked(e.target.checked);
@@ -45,11 +45,11 @@ export const AcceptPage = () => {
           >
             이용약관 동의
           </CheckboxInput>
-          <span className="text-dong_secondary text-xs font-medium absolute top-[0.125rem] left-40">
+          <span className="text-dong_secondary text-xs font-medium ml-1">
             (필수)
           </span>
         </li>
-        <li className="relative">
+        <li className="relative flex items-center">
           <CheckboxInput
             onChange={(e) => {
               setLocationChecked(e.target.checked);
@@ -58,11 +58,11 @@ export const AcceptPage = () => {
           >
             위치기반 서비스 이용 약관 동의
           </CheckboxInput>
-          <span className="text-dong_secondary text-xs font-medium absolute top-[0.125rem] left-64">
+          <span className="text-dong_secondary text-xs font-medium ml-1">
             (필수)
           </span>
         </li>
-        <li className="relative">
+        <li className="relative flex items-center">
           <CheckboxInput
             onChange={(e) => {
               setPersonalChecked(e.target.checked);
@@ -71,7 +71,7 @@ export const AcceptPage = () => {
           >
             개인정보 수집 및 이용 동의
           </CheckboxInput>
-          <span className="text-dong_secondary text-xs font-medium absolute top-[0.125rem] left-[14.5rem]">
+          <span className="text-dong_secondary text-xs font-medium ml-1">
             (필수)
           </span>
         </li>

@@ -1,7 +1,5 @@
 import axios from "axios";
 
-const BASE_URL = import.meta.env.VITE_BASE_API_URL;
-
 // API 응답 타입 정의
 export interface UserInfoResponse {
   status: string;
@@ -19,11 +17,15 @@ export interface UserInfoResponse {
 }
 
 // 사용자 정보 조회 API 함수
-export const getUserInfo = async () => {
+export const getUserInfo = async (): Promise<UserInfoResponse> => {
   try {
-    const response = await axios.get(`${BASE_URL}/api/user/my`, {
-      withCredentials: true,
-    });
+    const response = await axios.get<UserInfoResponse>(
+      `https://api.circleme.site/api/user/my`,
+      {
+        withCredentials: true, // 쿠키 포함
+      },
+    );
+    console.log("Fetched user info:", response.data);
     return response.data;
   } catch (error) {
     console.error("Failed to fetch user info:", error);

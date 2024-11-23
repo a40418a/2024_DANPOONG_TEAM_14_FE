@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { ActionButtons } from "../../components/ActionButtons";
 import { TypeSelectItem } from "../../components/TypeSelectItem";
 import { getUserInfo } from "../../api/userInfoApi";
+import { deleteUser } from "../../api/loginApi";
 
 export const ProfileEditPage = () => {
   const navigate = useNavigate();
@@ -35,6 +36,23 @@ export const ProfileEditPage = () => {
 
     fetchUserType();
   }, []);
+
+  // 회원 탈퇴 처리 함수
+  const handleDeleteAccount = async () => {
+    const confirmDelete = window.confirm(
+      "정말로 회원탈퇴를 진행하시겠습니까? 이 작업은 되돌릴 수 없습니다.",
+    );
+    if (!confirmDelete) return;
+
+    try {
+      await deleteUser();
+      // alert("회원 탈퇴가 완료되었습니다.");
+      navigate("/"); // 탈퇴 후 홈으로 리다이렉트
+    } catch (error) {
+      console.error("Failed to delete account:", error);
+      // alert("회원 탈퇴에 실패했습니다. 다시 시도해주세요.");
+    }
+  };
 
   return (
     <div className="flex flex-col items-center mt-24">
@@ -87,12 +105,7 @@ export const ProfileEditPage = () => {
           </ActionButtons>
         </div>
         <div>
-          <ActionButtons
-            onClick={() => {
-              navigate("/");
-            }}
-            disabled={false}
-          >
+          <ActionButtons onClick={handleDeleteAccount} disabled={false}>
             회원탈퇴
           </ActionButtons>
         </div>

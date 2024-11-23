@@ -6,8 +6,8 @@ import { ActionButtons } from "../../components/ActionButtons";
 import { MarketInfo } from "../../components/MarketInfo";
 
 import emotion1_sel from "../../assets/images/emotion-1-sel.svg";
-import emotion2_sel from "../../assets/images/emotion-2-sel.svg";
-import emotion3_sel from "../../assets/images/emotion-3-sel.svg";
+// import emotion2_sel from "../../assets/images/emotion-2-sel.svg";
+// import emotion3_sel from "../../assets/images/emotion-3-sel.svg";
 
 export const MarketPage = () => {
   const location = useLocation();

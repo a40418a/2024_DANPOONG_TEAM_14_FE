@@ -8,7 +8,7 @@ export const ReviewDetailItem = ({
   state,
   emotion,
   review,
-  picture,
+  // picture,
   comment,
   like,
   onClick,

@@ -34,6 +34,7 @@ export const ExploreType = () => {
               노약자
             </ActionButtons>
           </li>
+
           <li>
             <ActionButtons
               onClick={() => {

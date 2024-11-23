@@ -18,7 +18,7 @@ export const AcceptPage = () => {
 
   return (
     <div className="">
-      <div className="mt-32 ml-11">
+      <div className="mt-24 ml-11">
         <span className="text-lg font-bold">약관동의</span>
       </div>
       <div className="font-bold mt-11 mb-7">

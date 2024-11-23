@@ -78,7 +78,7 @@ export const BookmarkPage = () => {
 
   return (
     <div className="flex flex-col items-center relative h-screen">
-      <div className="w-full mt-28 flex items-center justify-between mb-5 px-10">
+      <div className="w-full mt-24 flex items-center justify-between mb-5 px-10">
         <div>
           <span className="text-lg font-bold leading-5">내 북마크 장소</span>
         </div>

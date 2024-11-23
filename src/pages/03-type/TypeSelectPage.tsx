@@ -11,7 +11,7 @@ export const TypeSelectPage = () => {
   const isSelected = (item: string): boolean => item === selectedItem;
 
   return (
-    <div className="flex flex-col items-center mt-28">
+    <div className="flex flex-col items-center mt-24">
       <div className="text-lg leading-6 font-bold flex flex-col justify-center items-center">
         <span>사용자님의 유형을 선택해주세요.</span>
         <span>맞춤 여행 장소를 추천해 드릴게요!</span>

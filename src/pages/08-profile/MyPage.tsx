@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { ActionButtons } from "../../components/ActionButtons";
 import { MyCollection } from "../../components/MyCollection";
 import { getUserInfo } from "../../api/userInfoApi";
+import { logoutUser } from "../../api/loginApi";
 
 export const MyPage = () => {
   const navigate = useNavigate();
@@ -42,6 +43,16 @@ export const MyPage = () => {
     fetchUserInfo();
   }, []);
 
+  // 로그아웃 함수
+  const handleLogout = async () => {
+    try {
+      await logoutUser();
+      navigate("/"); // 홈으로 리다이렉트
+    } catch (error) {
+      console.error("Failed to log out:", error);
+    }
+  };
+
   return (
     <div>
       <div className="mt-24">
@@ -79,7 +90,7 @@ export const MyPage = () => {
         <div className="mt-4 mb-8 text-center">
           <ActionButtons
             onClick={() => {
-              navigate("https://api.circleme.site/api/token/logout");
+              handleLogout();
             }}
             disabled={false}
           >

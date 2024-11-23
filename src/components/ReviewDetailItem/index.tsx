@@ -46,26 +46,22 @@ export const ReviewDetailItem = ({
     CHILD: "어린이",
   };
 
+  // 이미지 가져오기
   useEffect(() => {
     const fetchImages = async () => {
       try {
         const imageUrls = await Promise.all(
           picture.map(async (url) => {
-            // URL 유효성 검사 및 변환
-            const validUrl = url.startsWith("http")
-              ? url
-              : `https://api.circleme.site${url}`;
-            const response = await axios.get(
-              `https://api.circleme.site/api/file/get?fileUrl=${encodeURIComponent(
-                validUrl,
-              )}`,
-              {
-                withCredentials: true, // 쿠키 기반 인증 활성화
-                responseType: "blob", // Blob 데이터로 이미지 가져오기
-              },
-            );
+            // URL 유효성 검사 및 API 요청
+            const apiUrl = `https://api.circleme.site/api/file/get?fileUrl=${encodeURIComponent(
+              url,
+            )}`;
+            const response = await axios.get(apiUrl, {
+              withCredentials: true, // 쿠키 기반 인증
+              responseType: "blob", // 이미지 데이터를 Blob으로 가져옴
+            });
 
-            // Blob 데이터를 Object URL로 변환
+            // Blob 데이터를 URL로 변환
             const imageBlob = new Blob([response.data]);
             const imageUrl = URL.createObjectURL(imageBlob);
             return imageUrl;
@@ -143,7 +139,7 @@ export const ReviewDetailItem = ({
           {/* 사진 리스트 */}
           {resolvedImages && resolvedImages.length > 0 ? (
             <ul className="flex gap-3">
-              {resolvedImages.slice(0, 3).map((img, idx) => (
+              {resolvedImages.map((img, idx) => (
                 <li
                   key={idx}
                   className="w-24 h-24 bg-dong_light_gray rounded-lg overflow-hidden"

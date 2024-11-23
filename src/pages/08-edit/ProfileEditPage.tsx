@@ -34,41 +34,8 @@ export const ProfileEditPage = () => {
           />
         </div>
       </div>
-      <div className="flex items-center gap-12">
-        <div>
-          <div className="mb-3">
-            <span className="text-base leading-5 font-bold">나이</span>
-          </div>
-          <div className="flex items-center">
-            <div>
-              <InputItem
-                type={"number"}
-                width={127}
-                height={45}
-                placeholder={""}
-              />
-            </div>
-            <div className="ml-2">
-              <span className="text-sm leading-5 font-medium">세</span>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div className="mb-3">
-            <span className="text-base leading-5 font-bold">성별</span>
-          </div>
-          <div>
-            <InputItem
-              type={"select"}
-              width={127}
-              height={45}
-              placeholder={""}
-            />
-          </div>
-        </div>
-      </div>
-      <div className="flex flex-col items-center mb-32">
-        <div className="flex items-center gap-[11.938rem] mb-5 mt-14">
+      <div className="flex flex-col items-center">
+        <div className="flex items-center gap-48 my-5">
           <div>
             <span className="text-base font-bold leading-5">이동약자 유형</span>
           </div>

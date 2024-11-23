@@ -1,8 +1,10 @@
+import { useEffect, useState } from "react";
 import thumbIcon from "../../assets/images/thumbs-up.svg";
 import commentIcon from "../../assets/images/message-circle.svg";
 import emotion1_sel from "../../assets/images/emotion-1-sel.svg";
 import emotion2_sel from "../../assets/images/emotion-2-sel.svg";
 import emotion3_sel from "../../assets/images/emotion-3-sel.svg";
+import axios from "axios";
 
 export const ReviewDetailItem = ({
   user,
@@ -26,8 +28,9 @@ export const ReviewDetailItem = ({
   comment: number;
   like: number;
 
-  onClick: (e: React.MouseEvent<HTMLInputElement>) => void;
+  onClick: (e: React.MouseEvent<HTMLDivElement>) => void;
 }) => {
+  const [resolvedImages, setResolvedImages] = useState<string[]>([]);
   // 감정 이모지 맵핑
   const emotionMapping: { [key: string]: string } = {
     GOOD: emotion1_sel,
@@ -42,6 +45,28 @@ export const ReviewDetailItem = ({
     ELDERLY: "노약자",
     CHILD: "어린이",
   };
+
+  // 이미지 가져오기
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const imageUrls = await Promise.all(
+          picture.map(async (url) => {
+            const response = await axios.get<string>(
+              `/api/file/get?fileUrl=${encodeURIComponent(url)}`,
+            );
+            return response.data;
+          }),
+        );
+        setResolvedImages(imageUrls);
+      } catch (error) {
+        console.error("Failed to fetch review images:", error);
+        setResolvedImages([]); // 에러 발생 시 빈 배열로 설정
+      }
+    };
+
+    fetchImages();
+  }, [picture]);
 
   return (
     <div className="w-full h-auto border-b box-border relative pb-6">
@@ -62,7 +87,11 @@ export const ReviewDetailItem = ({
         <div className="flex">
           {/* 사용자프로필이미지 */}
           <div className="rounded-full w-12 h-12 bg-dong_light_gray">
-            <img src={userImg} alt="userImg" className="w-full h-full" />
+            <img
+              src={userImg}
+              alt="userImg"
+              className="w-full h-full object-cover rounded-full"
+            />
           </div>
           {/* 글 */}
           <div className="flex flex-col ml-3">
@@ -87,7 +116,7 @@ export const ReviewDetailItem = ({
             />
           </div>
           <div className="text-xs ml-3 w-64">
-            {review.length > 50 ? `${review.slice(0, 56)}...` : review}
+            {review.length > 50 ? `${review.slice(0, 50)}...` : review}
           </div>
         </div>
         {/* 섹션3 */}
@@ -97,9 +126,9 @@ export const ReviewDetailItem = ({
         {/* 섹션4 */}
         <div className="relative flex items-end">
           {/* 사진 리스트 */}
-          {picture && picture.length > 0 ? (
+          {resolvedImages && resolvedImages.length > 0 ? (
             <ul className="flex gap-3">
-              {picture.slice(0, 3).map((img, idx) => (
+              {resolvedImages.slice(0, 3).map((img, idx) => (
                 <li
                   key={idx}
                   className="w-24 h-24 bg-dong_light_gray rounded-lg overflow-hidden"

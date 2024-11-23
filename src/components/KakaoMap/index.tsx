@@ -49,7 +49,10 @@ export const KakaoMap = ({ categories }: { categories: string[] }) => {
           body: JSON.stringify(data),
         },
       );
-      console.log(response.status);
+
+      const result = await response.json();
+
+      console.log(result);
     } catch (error) {
       console.log(error);
     }

@@ -109,8 +109,14 @@ export const Header = () => {
 
   if (location.pathname === "/circle-me") {
     return (
-      <div className="w-screen h-20 flex flex-col items-center m-auto bg-dong_white">
-        <div className="w-[21.25rem] h-14  relative mt-10 flex mb-4">
+      <form
+        className="w-screen h-20 flex flex-col items-center m-auto bg-dong_white"
+        onSubmit={(e) => {
+          e.preventDefault(); // 기본 Form Submit 동작 방지
+          handleSearch(); // 검색 실행
+        }}
+      >
+        <div className="w-[21.25rem] h-14 relative mt-10 flex mb-4">
           <div className="w-full h-full">
             <input
               type="text"
@@ -119,21 +125,21 @@ export const Header = () => {
               value={xClick}
               onChange={(e) => setXClick(e.target.value)} // 상태 업데이트
               onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === "Tab") {
+                if (e.key === "Enter") {
                   e.preventDefault(); // 기본 동작 방지
                   handleSearch(); // 검색 실행
                 }
-              }} // 엔터 키 이벤트
+              }}
             />
           </div>
           <div
-            className="absolute top-1/2  right-7 transform -translate-y-1/2 "
+            className="absolute top-1/2 right-7 transform -translate-y-1/2"
             onClick={() => setXClick("")}
           >
-            <img src={Xicon} />
+            <img src={Xicon} alt="clear input" />
           </div>
         </div>
-      </div>
+      </form>
     );
   }
 

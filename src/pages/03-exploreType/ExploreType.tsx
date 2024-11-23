@@ -6,7 +6,7 @@ export const ExploreType = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="pt-32 flex flex-col items-center">
+    <div className="mt-32 flex flex-col items-center">
       <div>
         <span className="text-lg font-bold leading-6">
           사용자님의 유형을 선택해주세요.

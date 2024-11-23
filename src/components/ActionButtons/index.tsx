@@ -82,7 +82,7 @@ export const ActionButtons = ({
   if (location.pathname.includes("/theme")) {
     return (
       <button
-        className="w-[19.5rem] h-[6.875rem]  bg-dong_deep_gray rounded-lg "
+        className="w-80 h-28  bg-dong_deep_gray rounded-lg "
         onClick={onClick}
         disabled={disabled}
       >

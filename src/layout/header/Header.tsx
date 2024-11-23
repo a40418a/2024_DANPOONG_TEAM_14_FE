@@ -50,17 +50,7 @@ export const Header = () => {
           <div
             className="absolute left-7 top-7"
             onClick={() => {
-              if (location.pathname === "/types") {
-                navigate("/accept");
-              } else if (location.pathname === "/accept") {
-                navigate("/login");
-              } else if (
-                location.pathname === "/circle-me/profile/edit/types"
-              ) {
-                navigate("/circle-me/profile/edit");
-              } else if (location.pathname === "/circle-me/bookmark") {
-                navigate("/circle-me");
-              }
+              navigate(-1);
             }}
           >
             <IoIosArrowBack className="text-dong_light_black text-xl " />
@@ -165,11 +155,7 @@ export const Header = () => {
             <IoIosArrowBack
               className="text-dong_light_black text-xl"
               onClick={() => {
-                if (location.pathname.includes("/edit")) {
-                  navigate("/circle-me/profile");
-                } else {
-                  navigate("/circle-me");
-                }
+                navigate(-1);
               }}
             />
           </div>
@@ -225,7 +211,7 @@ export const Header = () => {
             <div
               className="absolute top-1/2  left-4 transform -translate-y-1/2 flex justify-center items-center"
               onClick={() => {
-                navigate("/circle-me");
+                navigate(-1);
               }}
             >
               <IoIosArrowBack className="text-dong_deep_gray text-xl" />

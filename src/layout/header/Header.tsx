@@ -151,10 +151,9 @@ export const Header = () => {
           </div>
         </div>
         <div>
-          {/* review/:id 경로일 경우 정중앙에 "집에가고싶다" 표시 */}
           {id ? (
             <span className="text-dong_light_black text-sm font-bold">
-              {id}
+              {/* {id} */}
             </span>
           ) : (
             <span className="text-dong_light_black text-sm font-bold">

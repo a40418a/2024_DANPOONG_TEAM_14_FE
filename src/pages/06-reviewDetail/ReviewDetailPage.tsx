@@ -87,19 +87,19 @@ export const ReviewDetailPage = () => {
               label: "GOOD",
               selImg: emotion1_sel,
               nselImg: emotion1_nsel,
-              color: "bg-blue-500",
+              color: "bg-dong_secondary",
             },
             {
               label: "SOSO",
               selImg: emotion2_sel,
               nselImg: emotion2_nsel,
-              color: "bg-blue-400",
+              color: "bg-dong_secondary",
             },
             {
               label: "BAD",
               selImg: emotion3_sel,
               nselImg: emotion3_nsel,
-              color: "bg-blue-300",
+              color: "bg-dong_secondary",
             },
           ].map((item, index) => {
             const percentage = calculatePercentage(item.label);

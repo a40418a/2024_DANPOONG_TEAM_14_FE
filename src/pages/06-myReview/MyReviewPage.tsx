@@ -60,7 +60,7 @@ export const MyReviewPage = () => {
   };
 
   return (
-    <div className="mt-28 px-8">
+    <div className="mt-24 px-8">
       <div className="mb-5">
         <span className="text-lg font-bold">내 작성 리뷰</span>
       </div>

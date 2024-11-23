@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 
 import { IoIosArrowBack } from "react-icons/io";
 import { FaUser } from "react-icons/fa6";
-import { FaBars } from "react-icons/fa6";
 import { CiSettings } from "react-icons/ci";
 import Xicon from "../../assets/images/x.svg";
 
@@ -162,9 +161,6 @@ export const Header = () => {
     return (
       <div className="w-screen h-20 flex justify-center items-center bg-dong_white box-border">
         <div className="flex flex-col items-center fixed left-7 top-7 gap-1">
-          <div>
-            <FaBars className="text-dong_light_black w-[1.125rem]" />
-          </div>
           <div>
             <IoIosArrowBack
               className="text-dong_light_black text-xl"

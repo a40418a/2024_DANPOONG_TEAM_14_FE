@@ -1,10 +1,10 @@
 // import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import emotion1_sel from "../../assets/images/emotion-1-sel.svg";
-import emotion1_nsel from "../../assets/images/emotion-1-nsel.svg";
-import emotion2_sel from "../../assets/images/emotion-2-sel.svg";
+// import emotion1_nsel from "../../assets/images/emotion-1-nsel.svg";
+// import emotion2_sel from "../../assets/images/emotion-2-sel.svg";
 import emotion2_nsel from "../../assets/images/emotion-2-nsel.svg";
-import emotion3_sel from "../../assets/images/emotion-3-sel.svg";
+// import emotion3_sel from "../../assets/images/emotion-3-sel.svg";
 import emotion3_nsel from "../../assets/images/emotion-3-nsel.svg";
 import { ReviewDetailItem } from "../../components/ReviewDetailItem";
 import { CheckPopup } from "../../components/CheckPopup";

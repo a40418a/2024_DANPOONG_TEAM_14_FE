@@ -7,7 +7,6 @@ declare global {
   }
 }
 
-// 카카오 지도 API의 장소 타입 정의
 interface Place {
   id: string;
   place_name: string;
@@ -17,14 +16,14 @@ interface Place {
   y: string; // 위도
 }
 
-export const KakaoMap = () => {
-  const locationState = useLocation().state as { keyword?: string };
-  const keyword = locationState?.keyword || ""; // 기본값 빈 문자열
+export const KakaoMap = ({ categories }: { categories: string[] }) => {
+  const [map, setMap] = useState<any>(null);
   const [location, setLocation] = useState({
     latitude: 33.450701,
     longitude: 126.570667,
   });
-  const navigate = useNavigate();
+  const [markers, setMarkers] = useState<any[]>([]);
+  const [keyword, setKeyword] = useState<string>("");
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -51,45 +50,103 @@ export const KakaoMap = () => {
         ),
         level: 3,
       };
-      const map = new window.kakao.maps.Map(container, options);
-      const infowindow = new window.kakao.maps.InfoWindow({ zIndex: 1 });
+      const mapInstance = new window.kakao.maps.Map(container, options);
+      setMap(mapInstance);
 
-      // 현재 위치 마커 표시
-      const currentMarker = new window.kakao.maps.Marker({
-        map,
+      // 현재 위치 마커 추가
+      const currentLocationMarkerImage = new window.kakao.maps.MarkerImage(
+        "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png",
+        new window.kakao.maps.Size(24, 35),
+      );
+
+      const currentLocationMarker = new window.kakao.maps.Marker({
         position: new window.kakao.maps.LatLng(
           location.latitude,
           location.longitude,
         ),
+        map: mapInstance,
+        image: currentLocationMarkerImage,
       });
 
-      // 키워드 검색 실행
+      setMarkers([currentLocationMarker]);
+    }
+  }, [location]);
+
+  useEffect(() => {
+    if (map) {
+      const ps = new window.kakao.maps.services.Places();
+
+      // 기존 마커 삭제
+      markers.forEach((marker) => marker.setMap(null));
+      setMarkers([]);
+
+      // 카테고리 검색
+      categories.forEach((category) => {
+        ps.categorySearch(
+          category,
+          (data: Place[], status: string) => {
+            if (status === window.kakao.maps.services.Status.OK) {
+              const newMarkers = data.map((place) => {
+                const marker = new window.kakao.maps.Marker({
+                  position: new window.kakao.maps.LatLng(place.y, place.x),
+                  map: map,
+                });
+
+                const infoWindow = new window.kakao.maps.InfoWindow({
+                  content: `<div>${place.place_name}</div>`,
+                });
+
+                // 마커 클릭 이벤트
+                window.kakao.maps.event.addListener(marker, "mousedown", () => {
+                  infoWindow.open(map, marker);
+                });
+
+                window.kakao.maps.event.addListener(marker, "mouseup", () => {
+                  infoWindow.close();
+                });
+
+                return marker;
+              });
+
+              setMarkers((prevMarkers) => [...prevMarkers, ...newMarkers]);
+            }
+          },
+          {
+            location: new window.kakao.maps.LatLng(
+              location.latitude,
+              location.longitude,
+            ),
+            radius: 20000,
+          },
+        );
+      });
+
+      // 키워드 검색
       if (keyword) {
-        const ps = new window.kakao.maps.services.Places();
         ps.keywordSearch(keyword, (data: Place[], status: string) => {
           if (status === window.kakao.maps.services.Status.OK) {
             const bounds = new window.kakao.maps.LatLngBounds();
 
-            data.forEach((place) => {
-              const placeMarker = new window.kakao.maps.Marker({
-                map,
+            const keywordMarkers = data.map((place) => {
+              const marker = new window.kakao.maps.Marker({
                 position: new window.kakao.maps.LatLng(place.y, place.x),
+                map: map,
+              });
+
+              const infowindow = new window.kakao.maps.InfoWindow({
+                content: `<div style="padding:5px;">${place.place_name}</div>`,
               });
 
               // 마커 클릭 이벤트
-              window.kakao.maps.event.addListener(placeMarker, "click", () => {
-                infowindow.setContent(
-                  `<div style="padding:5px;">${place.place_name}</div>`,
-                );
-                infowindow.open(map, placeMarker);
-
-                // 장소 데이터를 MarketPage로 전달
-                navigate("/circle-me/market", { state: { place } });
+              window.kakao.maps.event.addListener(marker, "click", () => {
+                infowindow.open(map, marker);
               });
 
               bounds.extend(new window.kakao.maps.LatLng(place.y, place.x));
+              return marker;
             });
 
+            setMarkers((prevMarkers) => [...prevMarkers, ...keywordMarkers]);
             map.setBounds(bounds);
           } else {
             alert("검색 결과가 없습니다.");
@@ -97,7 +154,7 @@ export const KakaoMap = () => {
         });
       }
     }
-  }, [location, keyword]);
+  }, [categories, keyword, map]);
 
   return <div id="map" className="w-full h-[75vh]" />;
 };

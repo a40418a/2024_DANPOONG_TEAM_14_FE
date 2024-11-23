@@ -6,7 +6,6 @@ import { FaUser } from "react-icons/fa6";
 import { CiSettings } from "react-icons/ci";
 import Xicon from "../../assets/images/x.svg";
 
-import { CategoryItem } from "../../components/CategoryItem";
 import { CheckPopup } from "../../components/CheckPopup";
 import { useStoreType } from "../../hooks/useStoreType";
 import { useGetHeaderTitle } from "../../hooks/useGetHeaderTitle";

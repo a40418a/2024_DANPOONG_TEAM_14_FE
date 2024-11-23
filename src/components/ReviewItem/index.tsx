@@ -38,9 +38,9 @@ export const ReviewItem = ({
             </div>
           </div>
         </div>
-        <div className="w-[12.5rem] h-auto mb-[0.625rem]">
+        <div className="w-4/5 h-auto mb-[0.625rem]">
           <span className="text-[0.625rem] font-medium inline-block leading-4">
-            {review}
+            {review.length > 56 ? `${review.slice(0, 56)}...` : review}
           </span>
         </div>
         <div className="mb-[0.625rem]">

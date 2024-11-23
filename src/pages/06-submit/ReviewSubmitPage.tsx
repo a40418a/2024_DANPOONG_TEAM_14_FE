@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 import classNames from "classnames";
 import GalleryIcon from "../../assets/images/gallery.svg";
 import Xicon from "../../assets/images/x.svg";
+import emotion1 from "../../assets/images/emotion-1.svg";
+import emotion2 from "../../assets/images/emotion-2.svg";
+import emotion3 from "../../assets/images/emotion-3.svg";
 
 export const ReviewSubmitPage = () => {
   const [selected, setSelected] = useState<string | null>(null);
@@ -10,9 +13,9 @@ export const ReviewSubmitPage = () => {
   const [keyboardHeight, setKeyboardHeight] = useState<number>(0);
 
   const options = [
-    { id: "comfortable", label: "편했어요" },
-    { id: "a_bit_uncomfortable", label: "조금 불편했어요" },
-    { id: "uncomfortable", label: "불편했어요" },
+    { id: "1", label: emotion1 },
+    { id: "2", label: emotion2 },
+    { id: "3", label: emotion3 },
   ];
 
   const openGallery = () => {
@@ -64,7 +67,7 @@ export const ReviewSubmitPage = () => {
         <input
           type="text"
           className="mt-5 w-full placeholder-dong_black text-lg font-bold"
-          placeholder="가게명을 입력해주세요."
+          placeholder="제목을 입력해주세요."
         />
         <textarea
           className="mt-5 w-full h-48 placeholder-dong_light_black resize-none"
@@ -96,20 +99,21 @@ export const ReviewSubmitPage = () => {
         style={{ bottom: `${keyboardHeight}px` }}
       >
         {/* 버튼 */}
-        <div className="flex gap-3 my-4">
+        <div className="flex gap-4 my-4">
           {options.map((option) => (
             <div
               key={option.id}
-              className={classNames(
-                "box-border w-28 p-2 text-center rounded-lg text-dong_white",
-                {
-                  "bg-dong_primary": selected === option.id,
-                  "bg-dong_deep_gray": selected !== option.id,
-                },
-              )}
+              className={classNames("box-border text-center", {
+                "bg-dong_primary": selected === option.id,
+                "bg-dong_deep_gray": selected !== option.id,
+              })}
               onClick={() => setSelected(option.id)}
             >
-              {option.label}
+              <img
+                src={option.label}
+                alt={`emotion-${option.id}`}
+                className="w-8 h-8 mx-auto"
+              />
             </div>
           ))}
         </div>

@@ -53,8 +53,9 @@ export const ReviewDetailItem = ({
         const imageUrls = await Promise.all(
           picture.map(async (url) => {
             const response = await axios.get<string>(
-              `/api/file/get?fileUrl=${encodeURIComponent(url)}`,
+              `https://api.circleme.site/api/file/get?fileUrl=${encodeURIComponent(url)}`,
             );
+            console.log("Fetched review image:", response.data);
             return response.data;
           }),
         );

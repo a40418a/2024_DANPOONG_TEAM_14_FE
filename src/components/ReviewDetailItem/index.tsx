@@ -87,7 +87,7 @@ export const ReviewDetailItem = ({
             />
           </div>
           <div className="text-xs ml-3 w-64">
-            {review.length > 56 ? `${review.slice(0, 56)}...` : review}
+            {review.length > 50 ? `${review.slice(0, 56)}...` : review}
           </div>
         </div>
         {/* 섹션3 */}
@@ -114,16 +114,16 @@ export const ReviewDetailItem = ({
             </ul>
           ) : (
             <span className="text-xs text-dong_light_black">사진 없음</span>
-          )}{" "}
-          <div className="absolute bottom-0 right-0 flex items-center gap-2">
-            <div className="flex flex-col items-center">
-              <img src={thumbIcon} alt="thumb" className="w-5 h-5" />
-              <span className="text-xs text-dong_light_black">{like}</span>
-            </div>
-            <div className="flex flex-col items-center">
-              <img src={commentIcon} alt="comment" className="w-5 h-5" />
-              <span className="text-xs text-dong_light_black">{comment}</span>
-            </div>
+          )}
+        </div>
+        <div className="absolute bottom-0 right-0 flex items-center gap-2">
+          <div className="flex flex-col items-center">
+            <img src={thumbIcon} alt="thumb" className="w-5 h-5" />
+            <span className="text-xs text-dong_light_black">{like}</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <img src={commentIcon} alt="comment" className="w-5 h-5" />
+            <span className="text-xs text-dong_light_black">{comment}</span>
           </div>
         </div>
       </div>

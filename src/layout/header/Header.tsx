@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import { IoIosArrowBack } from "react-icons/io";
@@ -15,6 +15,7 @@ export const Header = () => {
   const navigate = useNavigate();
   const storeType = useStoreType();
   const headerTitle = useGetHeaderTitle();
+  const { id } = useParams<{ id: string }>();
 
   const [showPopup, setShowPopup] = useState(false);
   const [xClick, setXClick] = useState("");
@@ -150,9 +151,16 @@ export const Header = () => {
           </div>
         </div>
         <div>
-          <span className="text-dong_light_black text-sm font-bold">
-            {headerTitle}
-          </span>
+          {/* review/:id 경로일 경우 정중앙에 "집에가고싶다" 표시 */}
+          {id ? (
+            <span className="text-dong_light_black text-sm font-bold">
+              {id}
+            </span>
+          ) : (
+            <span className="text-dong_light_black text-sm font-bold">
+              {headerTitle}
+            </span>
+          )}
         </div>
         {location.pathname === "/circle-me/profile/edit" ? (
           <div
@@ -164,9 +172,7 @@ export const Header = () => {
               저장
             </span>
           </div>
-        ) : location.pathname.includes("/review") ? (
-          <div></div>
-        ) : (
+        ) : location.pathname.includes("/review") && !id ? (
           <div
             className="flex flex-col justify-center fixed right-7 top-7"
             onClick={() => {
@@ -182,7 +188,7 @@ export const Header = () => {
               </span>
             </div>
           </div>
-        )}
+        ) : null}
       </div>
     );
   }

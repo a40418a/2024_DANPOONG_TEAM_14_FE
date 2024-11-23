@@ -15,6 +15,7 @@ import { BookmarkPage } from "../pages/05-bookmark/BookmarkPage";
 import { MyReviewPage } from "../pages/06-myReview/MyReviewPage";
 import { ReviewSubmitPage } from "../pages/06-submit/ReviewSubmitPage";
 import { MarketPage } from "../pages/05-market/MarketPage";
+import { ReviewDetailPage } from "../pages/06-reviewDetail/ReviewDetailPage";
 
 export const routes = [
   {
@@ -44,6 +45,7 @@ export const routes = [
       { path: "circle-me/review", element: <MyReviewPage /> },
       { path: "circle-me/submit", element: <ReviewSubmitPage /> },
       { path: "circle-me/market", element: <MarketPage /> },
+      { path: "circle-me/review/:id", element: <ReviewDetailPage /> },
     ],
   },
 ];

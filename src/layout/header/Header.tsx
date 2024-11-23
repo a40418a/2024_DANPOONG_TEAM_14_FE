@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 
 import { IoIosArrowBack } from "react-icons/io";
 import { FaUser } from "react-icons/fa6";
-import { FaBars } from "react-icons/fa6";
 import { CiSettings } from "react-icons/ci";
 import Xicon from "../../assets/images/x.svg";
 
@@ -19,6 +18,7 @@ export const Header = () => {
   const headerTitle = useGetHeaderTitle();
 
   const [showPopup, setShowPopup] = useState(false);
+  const [xClick, setXClick] = useState("");
 
   const handlePopupClick = (e: React.MouseEvent<HTMLInputElement>) => {
     const buttonText = e.currentTarget.textContent;
@@ -50,17 +50,7 @@ export const Header = () => {
           <div
             className="absolute left-7 top-7"
             onClick={() => {
-              if (location.pathname === "/types") {
-                navigate("/accept");
-              } else if (location.pathname === "/accept") {
-                navigate("/login");
-              } else if (
-                location.pathname === "/circle-me/profile/edit/types"
-              ) {
-                navigate("/circle-me/profile/edit");
-              } else if (location.pathname === "/circle-me/bookmark") {
-                navigate("/circle-me");
-              }
+              navigate(-1);
             }}
           >
             <IoIosArrowBack className="text-dong_light_black text-xl " />
@@ -109,24 +99,23 @@ export const Header = () => {
     return (
       <div className="w-screen h-20 flex flex-col items-center m-auto bg-dong_white">
         <div className="w-[21.25rem] h-14  relative mt-10 flex mb-4">
-          <div className="absolute top-1/2  left-4 transform -translate-y-1/2 flex justify-center items-center">
-            <IoIosArrowBack className="text-dong_deep_gray text-xl" />
-          </div>
           <div className="w-full h-full">
             <input
               type="text"
               className="box-border border-solid border-2 h-full px-10 placeholder-dong_light_black placeholder-bold rounded-lg text-sm"
               placeholder="가게명/동네를 입력하세요"
+              value={xClick}
+              onChange={(e) => setXClick(e.target.value)}
             />
           </div>
-          <div className="absolute top-1/2  right-7 transform -translate-y-1/2 ">
+          <div
+            className="absolute top-1/2  right-7 transform -translate-y-1/2 "
+            onClick={() => setXClick("")}
+          >
             <img src={Xicon} />
           </div>
         </div>
         <div className="flex items-center">
-          <div className="mr-5">
-            <FaBars className="text-dong_light_black w-[1.125rem]" />
-          </div>
           <ul className="flex gap-1">
             <li>
               <div className="w-[4.5rem] h-[1.688rem] rounded-lg bg-dong_primary flex justify-center">
@@ -163,17 +152,10 @@ export const Header = () => {
       <div className="w-screen h-20 flex justify-center items-center bg-dong_white box-border">
         <div className="flex flex-col items-center fixed left-7 top-7 gap-1">
           <div>
-            <FaBars className="text-dong_light_black w-[1.125rem]" />
-          </div>
-          <div>
             <IoIosArrowBack
               className="text-dong_light_black text-xl"
               onClick={() => {
-                if (location.pathname.includes("/edit")) {
-                  navigate("/circle-me/profile");
-                } else {
-                  navigate("/circle-me");
-                }
+                navigate(-1);
               }}
             />
           </div>
@@ -229,7 +211,7 @@ export const Header = () => {
             <div
               className="absolute top-1/2  left-4 transform -translate-y-1/2 flex justify-center items-center"
               onClick={() => {
-                navigate("/circle-me");
+                navigate(-1);
               }}
             >
               <IoIosArrowBack className="text-dong_deep_gray text-xl" />
@@ -239,9 +221,14 @@ export const Header = () => {
                 type="text"
                 className="border-dong_light_gray border-solid border-[0.0625rem] w-full h-full pl-10 placeholder-dong_black placeholder-bold rounded-lg text-sm"
                 placeholder="동네를 입력하세요"
+                value={xClick}
+                onChange={(e) => setXClick(e.target.value)}
               />
             </div>
-            <div className="absolute top-1/2 right-4 transform -translate-y-1/2">
+            <div
+              className="absolute top-1/2 right-4 transform -translate-y-1/2"
+              onClick={() => setXClick("")}
+            >
               <img src={Xicon} />
             </div>
           </div>

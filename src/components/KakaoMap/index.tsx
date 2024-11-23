@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
 declare global {
   interface Window {
-    kakao: any
+    kakao: any;
   }
 }
 
@@ -10,7 +10,7 @@ export const KakaoMap = () => {
   const [location, setLocation] = useState({
     latitude: 33.450701,
     longitude: 126.570667,
-  })
+  });
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -18,17 +18,17 @@ export const KakaoMap = () => {
         setLocation({
           latitude: pos.coords.latitude,
           longitude: pos.coords.longitude,
-        })
+        });
       },
       (err) => {
-        console.error("Error Code = " + err.code + " - " + err.message)
+        console.error("Error Code = " + err.code + " - " + err.message);
       },
       { enableHighAccuracy: true },
-    )
-  }, [])
+    );
+  }, []);
 
   useEffect(() => {
-    const container = document.getElementById("map")
+    const container = document.getElementById("map");
     if (container) {
       const options = {
         center: new window.kakao.maps.LatLng(
@@ -36,19 +36,19 @@ export const KakaoMap = () => {
           location.longitude,
         ),
         level: 3,
-      }
-      const map = new window.kakao.maps.Map(container, options)
+      };
+      const map = new window.kakao.maps.Map(container, options);
 
       const markerPosition = new window.kakao.maps.LatLng(
         location.latitude,
         location.longitude,
-      )
+      );
       const marker = new window.kakao.maps.Marker({
         position: markerPosition,
-      })
-      marker.setMap(map)
+      });
+      marker.setMap(map);
     }
-  }, [location])
+  }, [location]);
 
-  return <div id="map" className="w-[24.563rem] h-[39.563rem]" />
-}
+  return <div id="map" className="w-full h-[75vh]" />;
+};

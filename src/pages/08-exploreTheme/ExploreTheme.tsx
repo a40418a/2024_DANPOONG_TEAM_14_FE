@@ -6,7 +6,7 @@ export const ExploreTheme = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="mt-32">
+    <div className="mt-40">
       <ul className="flex flex-col items-center gap-[0.625rem]">
         <li>
           <ActionButtons

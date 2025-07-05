@@ -1,5 +1,7 @@
 <p align="center">
-  <!-- 로고 이미지 (원하시면 URL 넣어주세요) -->
+
+  <img src="https://github.com/user-attachments/assets/f8205a9a-7269-4f81-b58f-9ef5666a092f" width="100"/>
+
 </p>
 
 <h1 align="center">동그라ME</h1>
@@ -24,7 +26,9 @@
 ## 📹 Screenshots
 
 <p align="center">
-  <!-- 캡쳐 이미지 URL 교체 -->
+
+![동그라ME](https://github.com/user-attachments/assets/318c2471-24c5-4f60-8155-5fc480d56523)
+
 </p>
 
 ---
